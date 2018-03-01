@@ -1,0 +1,7 @@
+# WARNING! Remove "#" characters to enable lines, with "#" they are disabled and will be ignored by miner! Check README for details.
+
+POOL: ssl://zec-eu1.nanopool.org:6633, WALLET: t1emzuNbemjqnEhEue74NL3BxsR4cA1ajfP.YOUR_WORKER_NAME/YOUR_EMAIL, PSW: z, ALLPOOLS: 0
+POOL: ssl://zec-eu2.nanopool.org:6633, WALLET: t1emzuNbemjqnEhEue74NL3BxsR4cA1ajfP.YOUR_WORKER_NAME/YOUR_EMAIL PSW: z, ALLPOOLS: 0
+POOL: ssl://zec-asia1.nanopool.org:6633, WALLET: t1emzuNbemjqnEhEue74NL3BxsR4cA1ajfP.YOUR_WORKER_NAME/YOUR_EMAIL PSW: z, ALLPOOLS: 0
+POOL: ssl://zec-us-east1.nanopool.org:6633, WALLET: t1emzuNbemjqnEhEue74NL3BxsR4cA1ajfP.YOUR_WORKER_NAME/YOUR_EMAIL PSW: z, ALLPOOLS: 0
+POOL: ssl://zec-us-west1.nanopool.org:6633, WALLET: t1emzuNbemjqnEhEue74NL3BxsR4cA1ajfP.YOUR_WORKER_NAME/YOUR_EMAIL PSW: z, ALLPOOLS: 0

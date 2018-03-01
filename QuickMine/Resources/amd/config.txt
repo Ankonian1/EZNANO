@@ -1,0 +1,6 @@
+-zpool ssl://zec-eu1.nanopool.org:6633
+-zwal t1emzuNbemjqnEhEue74NL3BxsR4cA1ajfP.ADDRESS/fineouttechnology@gmail.com
+-zpsw z
+-ftime 1
+-i 6
+-tt 75

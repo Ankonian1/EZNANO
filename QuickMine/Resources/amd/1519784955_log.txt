@@ -1,0 +1,11 @@
+21:29:15:497	2b8c	args: -zpool ssl://zec-eu1.nanopool.org:6633 -zwal t1emzuNbemjqnEhEue74NL3BxsR4cA1ajfP.YOUR_WORKER_NAME/EMAIL -zpsw z -ftime 1 -i 6 -tt 75 
+21:29:15:499	2b8c	
+21:29:15:502	2b8c	ษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
+21:29:15:504	2b8c	บ             Claymore's ZCash AMD GPU Miner v12.6               บ
+21:29:15:506	2b8c	ศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
+21:29:15:514	2b8c	
+21:29:15:719	2b8c	ZEC: 6 pools are specified
+21:29:15:724	2b8c	Main ZCash pool is zec-eu1.nanopool.org:6633
+21:29:16:041	2b8c	OpenCL platform: NVIDIA CUDA
+21:29:16:043	2b8c	AMD OpenCL platform not found 
+21:29:16:046	2b8c	No AMD OPENCLGPUs found, exit
