@@ -253,7 +253,6 @@
             this.nanoPrice.Size = new System.Drawing.Size(155, 25);
             this.nanoPrice.TabIndex = 12;
             this.nanoPrice.Text = "Nano Price: $";
-            this.nanoPrice.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // EZNANO
             // 
