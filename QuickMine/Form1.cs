@@ -13,6 +13,7 @@ using System.Net.Http.Headers;
 using System.Net.Sockets;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Net;
 
 namespace QuickMine
 {
@@ -26,6 +27,7 @@ namespace QuickMine
         public int sharesAccepted = 0;
         public int sharesRejected = 0;
         public double power = 0;
+        public double currentNanoPrice = 0;
 
         public System.Diagnostics.Process proc = new System.Diagnostics.Process();
 
@@ -39,7 +41,7 @@ namespace QuickMine
             nvidiaIsSelected = false;
             Nvidia.BackColor = Color.OldLace;
             amdIsSelected = true;
-            AMD.BackColor = Color.Lime;
+            AMD.BackColor = Color.Aquamarine;
             gpuSelected = true;
             Console.Out.WriteLine("AMD Selected");
         }
@@ -49,7 +51,7 @@ namespace QuickMine
             amdIsSelected = false;
             AMD.BackColor = Color.OldLace;
             nvidiaIsSelected = true;
-            Nvidia.BackColor = Color.Lime;
+            Nvidia.BackColor = Color.Aquamarine;
             gpuSelected = true;
             Console.Out.WriteLine("Nvidia Selected");
         }
@@ -132,7 +134,7 @@ namespace QuickMine
         {
             while (running)
             {
-                await Task.Delay(60000);
+                await Task.Delay(30000);
                 getStats();
                 Console.Out.WriteLine("Hashrate:" + hashrate + " power:" + (power / 1000).ToString());
                 sols.Text = "SOL/s: " + hashrate;
@@ -140,12 +142,14 @@ namespace QuickMine
                 rejectedShares.Text = "Rejected Shares: " + sharesRejected;
                 double kwh = (power / 1000);
                 kWh.Text = "GPU kWh: " + kwh;
-                double dailyCost = Math.Round((kwh * .17 * 24), 2);
+                double kwhCostLocal = Double.Parse(kwhCost.Text);
+                double dailyCost = Math.Round((kwh * kwhCostLocal * 24), 2);
                 electricCost.Text = "Electric Cost/day: ≈$" + dailyCost;
                 double dailyRevenue = Math.Round((hashrate / 215 * .95), 2);
                 revenueDay.Text = "Rev/day: ≈$" + dailyRevenue;
                 double profit = Math.Round((dailyRevenue - dailyCost), 2);
                 dailyProfit.Text = "Profit/day: ≈$" + profit;
+                nanoPrice.Text = "Nano Price: $" + currentNanoPrice;
             }
         }
 
@@ -199,12 +203,46 @@ namespace QuickMine
             {
                 Console.WriteLine("EWBF Exception: " + ex.Message);
             }
+
+            try
+            {
+                var client = new WebClient();
+                var json = client.DownloadString("https://api.coinmarketcap.com/v1/ticker/nano/");
+
+                Console.Out.WriteLine(json);
+                dynamic dynJson = JsonConvert.DeserializeObject(json);
+                foreach (var item in dynJson)
+                {
+                    currentNanoPrice = item.price_usd;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("EWBF Exception: " + ex.Message);
+            }
         }
 
         private void sols_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+
+    class NANOOBjectTemplate
+    {
+        public int price_usd { get; set; }
+    }
+
+    class NANOTemplate
+    {
+        public int id { get; set; }
+        public List<NANOOBjectTemplate> result { get; set; }
     }
 
     class EWBFOBjectTemplate

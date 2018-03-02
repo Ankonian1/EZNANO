@@ -36,14 +36,17 @@
             this.selectGPUText = new System.Windows.Forms.Label();
             this.Nvidia = new System.Windows.Forms.Button();
             this.stats = new System.Windows.Forms.GroupBox();
-            this.sols = new System.Windows.Forms.Label();
-            this.acceptedShares = new System.Windows.Forms.Label();
-            this.rejectedShares = new System.Windows.Forms.Label();
-            this.kWh = new System.Windows.Forms.Label();
-            this.electricCost = new System.Windows.Forms.Label();
-            this.revenueDay = new System.Windows.Forms.Label();
             this.dailyProfit = new System.Windows.Forms.Label();
+            this.revenueDay = new System.Windows.Forms.Label();
+            this.electricCost = new System.Windows.Forms.Label();
+            this.kWh = new System.Windows.Forms.Label();
+            this.rejectedShares = new System.Windows.Forms.Label();
+            this.acceptedShares = new System.Windows.Forms.Label();
+            this.sols = new System.Windows.Forms.Label();
             this.Warning = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.kwhCost = new System.Windows.Forms.TextBox();
+            this.nanoPrice = new System.Windows.Forms.Label();
             this.stats.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,7 +90,7 @@
             this.AMD.BackColor = System.Drawing.Color.OldLace;
             this.AMD.BackgroundImage = global::QuickMine.Properties.Resources.AMD;
             this.AMD.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.AMD.Location = new System.Drawing.Point(20, 170);
+            this.AMD.Location = new System.Drawing.Point(21, 139);
             this.AMD.Name = "AMD";
             this.AMD.Size = new System.Drawing.Size(160, 160);
             this.AMD.TabIndex = 3;
@@ -99,7 +102,7 @@
             this.selectGPUText.AutoSize = true;
             this.selectGPUText.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selectGPUText.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.selectGPUText.Location = new System.Drawing.Point(130, 127);
+            this.selectGPUText.Location = new System.Drawing.Point(131, 100);
             this.selectGPUText.Name = "selectGPUText";
             this.selectGPUText.Size = new System.Drawing.Size(129, 27);
             this.selectGPUText.TabIndex = 5;
@@ -110,7 +113,7 @@
             this.Nvidia.BackColor = System.Drawing.Color.OldLace;
             this.Nvidia.BackgroundImage = global::QuickMine.Properties.Resources.Nvidia__2_;
             this.Nvidia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Nvidia.Location = new System.Drawing.Point(212, 170);
+            this.Nvidia.Location = new System.Drawing.Point(212, 139);
             this.Nvidia.Name = "Nvidia";
             this.Nvidia.Size = new System.Drawing.Size(160, 160);
             this.Nvidia.TabIndex = 7;
@@ -135,56 +138,15 @@
             this.stats.TabStop = false;
             this.stats.Text = "Statistics";
             // 
-            // sols
+            // dailyProfit
             // 
-            this.sols.AutoSize = true;
-            this.sols.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sols.Location = new System.Drawing.Point(3, 25);
-            this.sols.Name = "sols";
-            this.sols.Size = new System.Drawing.Size(61, 20);
-            this.sols.TabIndex = 0;
-            this.sols.Text = "SOL/s: ";
-            this.sols.Click += new System.EventHandler(this.sols_Click);
-            // 
-            // acceptedShares
-            // 
-            this.acceptedShares.AutoSize = true;
-            this.acceptedShares.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.acceptedShares.Location = new System.Drawing.Point(3, 45);
-            this.acceptedShares.Name = "acceptedShares";
-            this.acceptedShares.Size = new System.Drawing.Size(140, 20);
-            this.acceptedShares.TabIndex = 1;
-            this.acceptedShares.Text = "Accepted Shares: ";
-            // 
-            // rejectedShares
-            // 
-            this.rejectedShares.AutoSize = true;
-            this.rejectedShares.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rejectedShares.Location = new System.Drawing.Point(3, 65);
-            this.rejectedShares.Name = "rejectedShares";
-            this.rejectedShares.Size = new System.Drawing.Size(136, 20);
-            this.rejectedShares.TabIndex = 2;
-            this.rejectedShares.Text = "Rejected Shares: ";
-            // 
-            // kWh
-            // 
-            this.kWh.AutoSize = true;
-            this.kWh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kWh.Location = new System.Drawing.Point(172, 25);
-            this.kWh.Name = "kWh";
-            this.kWh.Size = new System.Drawing.Size(88, 20);
-            this.kWh.TabIndex = 3;
-            this.kWh.Text = "GPU kWh: ";
-            // 
-            // electricCost
-            // 
-            this.electricCost.AutoSize = true;
-            this.electricCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.electricCost.Location = new System.Drawing.Point(172, 45);
-            this.electricCost.Name = "electricCost";
-            this.electricCost.Size = new System.Drawing.Size(135, 20);
-            this.electricCost.TabIndex = 4;
-            this.electricCost.Text = "Electric Cost/day: ";
+            this.dailyProfit.AutoSize = true;
+            this.dailyProfit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dailyProfit.Location = new System.Drawing.Point(117, 141);
+            this.dailyProfit.Name = "dailyProfit";
+            this.dailyProfit.Size = new System.Drawing.Size(115, 25);
+            this.dailyProfit.TabIndex = 6;
+            this.dailyProfit.Text = "Profit/day: ";
             // 
             // revenueDay
             // 
@@ -196,15 +158,56 @@
             this.revenueDay.TabIndex = 5;
             this.revenueDay.Text = "Rev/day: ";
             // 
-            // dailyProfit
+            // electricCost
             // 
-            this.dailyProfit.AutoSize = true;
-            this.dailyProfit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dailyProfit.Location = new System.Drawing.Point(117, 141);
-            this.dailyProfit.Name = "dailyProfit";
-            this.dailyProfit.Size = new System.Drawing.Size(115, 25);
-            this.dailyProfit.TabIndex = 6;
-            this.dailyProfit.Text = "Profit/day: ";
+            this.electricCost.AutoSize = true;
+            this.electricCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.electricCost.Location = new System.Drawing.Point(172, 45);
+            this.electricCost.Name = "electricCost";
+            this.electricCost.Size = new System.Drawing.Size(135, 20);
+            this.electricCost.TabIndex = 4;
+            this.electricCost.Text = "Electric Cost/day: ";
+            // 
+            // kWh
+            // 
+            this.kWh.AutoSize = true;
+            this.kWh.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kWh.Location = new System.Drawing.Point(172, 25);
+            this.kWh.Name = "kWh";
+            this.kWh.Size = new System.Drawing.Size(88, 20);
+            this.kWh.TabIndex = 3;
+            this.kWh.Text = "GPU kWh: ";
+            // 
+            // rejectedShares
+            // 
+            this.rejectedShares.AutoSize = true;
+            this.rejectedShares.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rejectedShares.Location = new System.Drawing.Point(3, 65);
+            this.rejectedShares.Name = "rejectedShares";
+            this.rejectedShares.Size = new System.Drawing.Size(136, 20);
+            this.rejectedShares.TabIndex = 2;
+            this.rejectedShares.Text = "Rejected Shares: ";
+            // 
+            // acceptedShares
+            // 
+            this.acceptedShares.AutoSize = true;
+            this.acceptedShares.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.acceptedShares.Location = new System.Drawing.Point(3, 45);
+            this.acceptedShares.Name = "acceptedShares";
+            this.acceptedShares.Size = new System.Drawing.Size(140, 20);
+            this.acceptedShares.TabIndex = 1;
+            this.acceptedShares.Text = "Accepted Shares: ";
+            // 
+            // sols
+            // 
+            this.sols.AutoSize = true;
+            this.sols.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sols.Location = new System.Drawing.Point(3, 25);
+            this.sols.Name = "sols";
+            this.sols.Size = new System.Drawing.Size(61, 20);
+            this.sols.TabIndex = 0;
+            this.sols.Text = "SOL/s: ";
+            this.sols.Click += new System.EventHandler(this.sols_Click);
             // 
             // Warning
             // 
@@ -219,12 +222,48 @@
             this.Warning.Text = "WARNING: If Nano address is incorrect, funds may not be transferred.";
             this.Warning.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.Control;
+            this.label2.Location = new System.Drawing.Point(31, 317);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(214, 19);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Enter Electricity cost per kWh:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // kwhCost
+            // 
+            this.kwhCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwhCost.Location = new System.Drawing.Point(251, 316);
+            this.kwhCost.Name = "kwhCost";
+            this.kwhCost.Size = new System.Drawing.Size(42, 22);
+            this.kwhCost.TabIndex = 11;
+            this.kwhCost.Text = "0.1";
+            // 
+            // nanoPrice
+            // 
+            this.nanoPrice.AutoSize = true;
+            this.nanoPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nanoPrice.ForeColor = System.Drawing.SystemColors.Control;
+            this.nanoPrice.Location = new System.Drawing.Point(9, 9);
+            this.nanoPrice.Name = "nanoPrice";
+            this.nanoPrice.Size = new System.Drawing.Size(155, 25);
+            this.nanoPrice.TabIndex = 12;
+            this.nanoPrice.Text = "Nano Price: $";
+            this.nanoPrice.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // EZNANO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(384, 661);
+            this.Controls.Add(this.nanoPrice);
+            this.Controls.Add(this.kwhCost);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.Warning);
             this.Controls.Add(this.stats);
             this.Controls.Add(this.Nvidia);
@@ -261,6 +300,9 @@
         private System.Windows.Forms.Label revenueDay;
         private System.Windows.Forms.Label dailyProfit;
         private System.Windows.Forms.TextBox Warning;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox kwhCost;
+        private System.Windows.Forms.Label nanoPrice;
     }
 }
 
