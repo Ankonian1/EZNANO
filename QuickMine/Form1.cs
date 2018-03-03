@@ -74,6 +74,8 @@ namespace QuickMine
                     Console.Out.WriteLine("Started Miner");
                     Nvidia.Enabled = false;
                     AMD.Enabled = false;
+                    Animation.Enabled = true;
+                    kwhCost.Enabled = false;
                     if (amdIsSelected)
                     {
                         amdStart();
@@ -89,6 +91,8 @@ namespace QuickMine
                     running = false;
                     proc.Kill();
                     NanoAddress.Enabled = true;
+                    kwhCost.Enabled = true;
+                    Animation.Enabled = false;
                     Nvidia.Enabled = true;
                     AMD.Enabled = true;
                     StartStop.Text = "Start!";
@@ -149,6 +153,7 @@ namespace QuickMine
                 revenueDay.Text = "Rev/day: ≈$" + dailyRevenue;
                 double profit = Math.Round((dailyRevenue - dailyCost), 2);
                 dailyProfit.Text = "Profit/day: ≈$" + profit;
+                currentNanoPrice = Math.Round(currentNanoPrice, 2);
                 nanoPrice.Text = "Nano Price: $" + currentNanoPrice;
             }
         }
@@ -219,7 +224,7 @@ namespace QuickMine
             }
             catch (Exception ex)
             {
-                Console.WriteLine("EWBF Exception: " + ex.Message);
+                Console.WriteLine("Wasnt able to pull data from coinmarketcap for nano price.");
             }
         }
 
@@ -232,17 +237,6 @@ namespace QuickMine
         {
 
         }
-    }
-
-    class NANOOBjectTemplate
-    {
-        public int price_usd { get; set; }
-    }
-
-    class NANOTemplate
-    {
-        public int id { get; set; }
-        public List<NANOOBjectTemplate> result { get; set; }
     }
 
     class EWBFOBjectTemplate

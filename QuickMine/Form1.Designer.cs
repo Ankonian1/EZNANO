@@ -47,7 +47,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.kwhCost = new System.Windows.Forms.TextBox();
             this.nanoPrice = new System.Windows.Forms.Label();
+            this.Animation = new System.Windows.Forms.PictureBox();
             this.stats.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Animation)).BeginInit();
             this.SuspendLayout();
             // 
             // NanoAddress
@@ -255,12 +257,24 @@
             this.nanoPrice.Text = "Nano Price: $";
             this.nanoPrice.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // Animation
+            // 
+            this.Animation.Enabled = false;
+            this.Animation.Image = ((System.Drawing.Image)(resources.GetObject("Animation.Image")));
+            this.Animation.Location = new System.Drawing.Point(268, 12);
+            this.Animation.Name = "Animation";
+            this.Animation.Size = new System.Drawing.Size(105, 115);
+            this.Animation.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Animation.TabIndex = 13;
+            this.Animation.TabStop = false;
+            // 
             // EZNANO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(384, 661);
+            this.Controls.Add(this.Animation);
             this.Controls.Add(this.nanoPrice);
             this.Controls.Add(this.kwhCost);
             this.Controls.Add(this.label2);
@@ -278,6 +292,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.stats.ResumeLayout(false);
             this.stats.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Animation)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -303,6 +318,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox kwhCost;
         private System.Windows.Forms.Label nanoPrice;
+        private System.Windows.Forms.PictureBox Animation;
     }
 }
 
