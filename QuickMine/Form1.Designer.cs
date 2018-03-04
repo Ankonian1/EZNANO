@@ -48,6 +48,7 @@
             this.kwhCost = new System.Windows.Forms.TextBox();
             this.nanoPrice = new System.Windows.Forms.Label();
             this.Animation = new System.Windows.Forms.PictureBox();
+            this.nanoDaily = new System.Windows.Forms.Label();
             this.stats.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Animation)).BeginInit();
             this.SuspendLayout();
@@ -124,6 +125,7 @@
             // 
             // stats
             // 
+            this.stats.Controls.Add(this.nanoDaily);
             this.stats.Controls.Add(this.dailyProfit);
             this.stats.Controls.Add(this.revenueDay);
             this.stats.Controls.Add(this.electricCost);
@@ -144,7 +146,7 @@
             // 
             this.dailyProfit.AutoSize = true;
             this.dailyProfit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dailyProfit.Location = new System.Drawing.Point(117, 141);
+            this.dailyProfit.Location = new System.Drawing.Point(6, 141);
             this.dailyProfit.Name = "dailyProfit";
             this.dailyProfit.Size = new System.Drawing.Size(115, 25);
             this.dailyProfit.TabIndex = 6;
@@ -267,6 +269,16 @@
             this.Animation.TabIndex = 13;
             this.Animation.TabStop = false;
             // 
+            // nanoDaily
+            // 
+            this.nanoDaily.AutoSize = true;
+            this.nanoDaily.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nanoDaily.Location = new System.Drawing.Point(191, 141);
+            this.nanoDaily.Name = "nanoDaily";
+            this.nanoDaily.Size = new System.Drawing.Size(116, 25);
+            this.nanoDaily.TabIndex = 7;
+            this.nanoDaily.Text = "Nano/day: ";
+            // 
             // EZNANO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -318,6 +330,7 @@
         private System.Windows.Forms.TextBox kwhCost;
         private System.Windows.Forms.Label nanoPrice;
         private System.Windows.Forms.PictureBox Animation;
+        private System.Windows.Forms.Label nanoDaily;
     }
 }
 

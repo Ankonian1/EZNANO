@@ -90,9 +90,6 @@
     <None Include="Resources\AMD.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Nvidia.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Nvidia %282%29.png" />
   </ItemGroup>
   <ItemGroup>

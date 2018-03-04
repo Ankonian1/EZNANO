@@ -28,12 +28,23 @@ namespace QuickMine
         public int sharesRejected = 0;
         public double power = 0;
         public double currentNanoPrice = 0;
+        public string Address;
+        public double nanoPerDay = 0;
 
         public System.Diagnostics.Process proc = new System.Diagnostics.Process();
 
         public EZNANO()
         {
             InitializeComponent();
+            string path = Directory.GetCurrentDirectory();
+            path = path.Substring(0, path.Length - 9);
+            path = path + "Resources\\address.txt";
+            if (File.Exists(path))
+            {
+                Address = File.ReadAllText(path);
+                Console.Out.WriteLine(Address);
+                NanoAddress.Text = Address;
+            }
         }
 
         private void AMD_Click(object sender, EventArgs e)
@@ -68,6 +79,7 @@ namespace QuickMine
                 if (StartStop.Text == "Start!")
                 {
                     running = true;
+                    Address = NanoAddress.Text;
                     StartStop.Text = "Stop";
                     StartStop.BackColor = Color.Red;
                     NanoAddress.Enabled = false;
@@ -76,6 +88,13 @@ namespace QuickMine
                     AMD.Enabled = false;
                     Animation.Enabled = true;
                     kwhCost.Enabled = false;
+
+                    string path = Directory.GetCurrentDirectory();
+                    path = path.Substring(0, path.Length - 9);
+                    path = path + "Resources\\address.txt";
+                    File.WriteAllText(path, Address);
+
+
                     if (amdIsSelected)
                     {
                         amdStart();
@@ -124,6 +143,7 @@ namespace QuickMine
         {
             string args = "--server zec-us-east1.nanopool.org --user t1gi2N8yiQn8zsVEgeABNuYxEoKeFNVbqHG.Desktop/fineouttechnology@gmail.com --port 6666 --intensity 55 --api 0.0.0.0:42000";
             args = args.Replace("Desktop", NanoAddress.Text);
+            Address = NanoAddress.Text;
             string path = Directory.GetCurrentDirectory();
             path = path.Substring(0, path.Length - 9);
             path = path + "Resources\\nvidia\\miner.exe";
@@ -155,7 +175,9 @@ namespace QuickMine
                 dailyProfit.Text = "Profit/day: ≈$" + profit;
                 currentNanoPrice = Math.Round(currentNanoPrice, 2);
                 nanoPrice.Text = "Nano Price: $" + currentNanoPrice;
-            }
+                nanoPerDay = Math.Round(profit / currentNanoPrice, 4);
+                nanoDaily.Text = "Nano/day: " + nanoPerDay;
+            } 
         }
 
         public async void getStats()
