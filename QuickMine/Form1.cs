@@ -232,7 +232,7 @@ namespace QuickMine
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                Console.WriteLine("Wasnt able to kill the miner process");
             }
             Console.Out.WriteLine("Stopped Miner");
             stopButton.SendToBack();
