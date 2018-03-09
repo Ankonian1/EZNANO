@@ -220,9 +220,20 @@ namespace QuickMine
         private void stopButton_Click(object sender, EventArgs e)
         {
             running = false;
-            proc.Kill();
+            //proc.Kill();
             NanoAddress.Enabled = true;
             kwhCost.Enabled = true;
+            try
+            {
+                foreach (Process proc in Process.GetProcessesByName("miner"))
+                {
+                    proc.Kill();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             Console.Out.WriteLine("Stopped Miner");
             stopButton.SendToBack();
         }
