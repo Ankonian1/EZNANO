@@ -87,7 +87,7 @@
             this.StartButton.TabIndex = 1;
             this.StartButton.Tag = "start";
             this.StartButton.UseVisualStyleBackColor = false;
-            this.StartButton.Click += new System.EventHandler(this.StartStop_Click);
+            this.StartButton.Click += new System.EventHandler(this.Start_Click);
             // 
             // selectGPUText
             // 

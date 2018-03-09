@@ -49,23 +49,7 @@ namespace QuickMine
             }
         }
 
-        private void AMD_Click(object sender, EventArgs e)
-        {
-            nvidiaIsSelected = false;
-            amdIsSelected = true;
-            gpuSelected = true;
-            Console.Out.WriteLine("AMD Selected");
-        }
-
-        private void Nvidia_Click(object sender, EventArgs e)
-        {
-            amdIsSelected = false;
-            nvidiaIsSelected = true;
-            gpuSelected = true;
-            Console.Out.WriteLine("Nvidia Selected");
-        }
-
-        private void StartStop_Click(object sender, EventArgs e)
+        private void Start_Click(object sender, EventArgs e)
         {
             path = Directory.GetCurrentDirectory();
             path = path.Substring(0, path.Length - 9);
@@ -100,19 +84,17 @@ namespace QuickMine
 
         private void amdStart()
         {
+            string args = "-zpool zec-us-east1.nanopool.org:6666 -zwal t1Mkjca4yn8DXppNPY5nH58U1xP3sjnR8DF.Desktop/fineouttechnology@gmail.com -zpsw z -ftime 1 -i 7 -tt 75";
+            args = args.Replace("Desktop", NanoAddress.Text);
+            Address = NanoAddress.Text;
             string path = Directory.GetCurrentDirectory();
             path = path.Substring(0, path.Length - 9);
-            path = path + "Resources\\amd\\amdstart";
+            path = path + "Resources\\amd\\ZecMiner64.exe";
 
-            System.Diagnostics.Process proc = new System.Diagnostics.Process();
             proc.StartInfo.FileName = path;
-            proc.StartInfo.WorkingDirectory = path.Substring(0, path.Length - 10);
-            proc.StartInfo.RedirectStandardError = true;
-            proc.StartInfo.RedirectStandardOutput = true;
-            proc.StartInfo.UseShellExecute = true;
+            proc.StartInfo.Arguments = args;
+            proc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             proc.Start();
-
-            Console.Out.WriteLine(path);
         }
 
         private void nvidiaStart()
@@ -135,7 +117,13 @@ namespace QuickMine
             while (running)
             {
                 await Task.Delay(30000);
-                getStats();
+                if (nvidiaIsSelected)
+                {
+                    GetNvidiaStats();
+                } else
+                {
+                    GetAMDStats();
+                }
                 Console.Out.WriteLine("Hashrate:" + hashrate + " power:" + (power / 1000).ToString());
                 sols.Text = "" + hashrate;
                 acceptedShares.Text = "" + sharesAccepted;
@@ -154,7 +142,12 @@ namespace QuickMine
             } 
         }
 
-        public async void getStats()
+        private async void GetAMDStats()
+        {
+            
+        }
+
+        public async void GetNvidiaStats()
         {
             try
             {
