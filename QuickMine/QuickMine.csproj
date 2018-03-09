@@ -64,19 +64,19 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -84,17 +84,24 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AMD.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Nvidia %282%29.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="Resources\amd_logo.png" />
+    <Content Include="Resources\bg.jpg" />
+    <Content Include="Resources\big_border.png" />
+    <Content Include="Resources\eznano_title.png" />
+    <Content Include="Resources\left_arrow.png" />
     <Content Include="Resources\Logo.ico" />
-    <Content Include="Resources\Old_mining_animation.gif" />
+    <Content Include="Resources\nvidia_logo.png" />
+    <Content Include="Resources\right_arrow.png" />
+    <Content Include="Resources\start_button.png" />
+    <Content Include="Resources\stop_button.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

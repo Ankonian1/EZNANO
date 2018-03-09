@@ -20,8 +20,8 @@ namespace QuickMine
     public partial class EZNANO : Form
     {
         public bool amdIsSelected = false;
-        public bool nvidiaIsSelected = false;
-        public bool gpuSelected = false;
+        public bool nvidiaIsSelected = true;
+        public bool gpuSelected = true;
         public bool running = false;
         public double hashrate = 0;
         public int sharesAccepted = 0;
@@ -30,17 +30,19 @@ namespace QuickMine
         public double currentNanoPrice = 0;
         public string Address;
         public double nanoPerDay = 0;
+        public string path = Directory.GetCurrentDirectory();
 
         public System.Diagnostics.Process proc = new System.Diagnostics.Process();
 
         public EZNANO()
         {
             InitializeComponent();
-            string path = Directory.GetCurrentDirectory();
+            path = Directory.GetCurrentDirectory();
             path = path.Substring(0, path.Length - 9);
-            path = path + "Resources\\address.txt";
-            if (File.Exists(path))
+            path = path + "Resources\\";
+            if (File.Exists(path + "address.txt"))
             {
+                path += "address.txt";
                 Address = File.ReadAllText(path);
                 Console.Out.WriteLine(Address);
                 NanoAddress.Text = Address;
@@ -50,9 +52,7 @@ namespace QuickMine
         private void AMD_Click(object sender, EventArgs e)
         {
             nvidiaIsSelected = false;
-            Nvidia.BackColor = Color.OldLace;
             amdIsSelected = true;
-            AMD.BackColor = Color.Aquamarine;
             gpuSelected = true;
             Console.Out.WriteLine("AMD Selected");
         }
@@ -60,64 +60,40 @@ namespace QuickMine
         private void Nvidia_Click(object sender, EventArgs e)
         {
             amdIsSelected = false;
-            AMD.BackColor = Color.OldLace;
             nvidiaIsSelected = true;
-            Nvidia.BackColor = Color.Aquamarine;
             gpuSelected = true;
             Console.Out.WriteLine("Nvidia Selected");
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void StartStop_Click(object sender, EventArgs e)
         {
-            if(NanoAddress.Text != null && NanoAddress.Text != "Nano Address..." && gpuSelected)
+            path = Directory.GetCurrentDirectory();
+            path = path.Substring(0, path.Length - 9);
+            path = path + "Resources\\";
+            if (NanoAddress.Text != null && NanoAddress.Text != "Nano Address..." && gpuSelected)
             {
-                if (StartStop.Text == "Start!")
+                running = true;
+                Address = NanoAddress.Text;
+                NanoAddress.Enabled = false;
+                Console.Out.WriteLine("Started Miner");
+                kwhCost.Enabled = false;
+
+                string path = Directory.GetCurrentDirectory();
+                path = path.Substring(0, path.Length - 9);
+                path = path + "Resources\\address.txt";
+                File.WriteAllText(path, Address);
+
+
+                if (amdIsSelected)
                 {
-                    running = true;
-                    Address = NanoAddress.Text;
-                    StartStop.Text = "Stop";
-                    StartStop.BackColor = Color.Red;
-                    NanoAddress.Enabled = false;
-                    Console.Out.WriteLine("Started Miner");
-                    Nvidia.Enabled = false;
-                    AMD.Enabled = false;
-                    Animation.Enabled = true;
-                    kwhCost.Enabled = false;
-
-                    string path = Directory.GetCurrentDirectory();
-                    path = path.Substring(0, path.Length - 9);
-                    path = path + "Resources\\address.txt";
-                    File.WriteAllText(path, Address);
-
-
-                    if (amdIsSelected)
-                    {
-                        amdStart();
-                    }
-                    else
-                    {
-                        nvidiaStart();
-                    }
-                    runStats();
+                    amdStart();
                 }
                 else
                 {
-                    running = false;
-                    proc.Kill();
-                    NanoAddress.Enabled = true;
-                    kwhCost.Enabled = true;
-                    Animation.Enabled = false;
-                    Nvidia.Enabled = true;
-                    AMD.Enabled = true;
-                    StartStop.Text = "Start!";
-                    StartStop.BackColor = Color.DodgerBlue;
-                    Console.Out.WriteLine("Stopped Miner");
+                    nvidiaStart();
                 }
+                runStats();
+                StartButton.SendToBack();
             }
             
         }
@@ -141,7 +117,7 @@ namespace QuickMine
 
         private void nvidiaStart()
         {
-            string args = "--server zec-us-east1.nanopool.org --user t1gi2N8yiQn8zsVEgeABNuYxEoKeFNVbqHG.Desktop/fineouttechnology@gmail.com --port 6666 --intensity 55 --api 0.0.0.0:42000";
+            string args = "--server zec-us-east1.nanopool.org --user t1Mkjca4yn8DXppNPY5nH58U1xP3sjnR8DF.Desktop/fineouttechnology@gmail.com --port 6666 --intensity 55 --api 0.0.0.0:42000";
             args = args.Replace("Desktop", NanoAddress.Text);
             Address = NanoAddress.Text;
             string path = Directory.GetCurrentDirectory();
@@ -161,22 +137,20 @@ namespace QuickMine
                 await Task.Delay(30000);
                 getStats();
                 Console.Out.WriteLine("Hashrate:" + hashrate + " power:" + (power / 1000).ToString());
-                sols.Text = "SOL/s: " + hashrate;
-                acceptedShares.Text = "Accepted Shares: " + sharesAccepted;
-                rejectedShares.Text = "Rejected Shares: " + sharesRejected;
+                sols.Text = "" + hashrate;
+                acceptedShares.Text = "" + sharesAccepted;
+                rejectedShares.Text = "" + sharesRejected;
                 double kwh = (power / 1000);
-                kWh.Text = "GPU kWh: " + kwh;
+                kWh.Text = "" + kwh;
                 double kwhCostLocal = Double.Parse(kwhCost.Text);
                 double dailyCost = Math.Round((kwh * kwhCostLocal * 24), 2);
-                electricCost.Text = "Electric Cost/day: ≈$" + dailyCost;
+                electricCost.Text = "≈$" + dailyCost;
                 double dailyRevenue = Math.Round((hashrate / 215 * .95), 2);
-                revenueDay.Text = "Rev/day: ≈$" + dailyRevenue;
+                revenueDay.Text = "≈$" + dailyRevenue;
                 double profit = Math.Round((dailyRevenue - dailyCost), 2);
-                dailyProfit.Text = "Profit/day: ≈$" + profit;
+                dailyProfit.Text = "≈$" + profit;
                 currentNanoPrice = Math.Round(currentNanoPrice, 2);
-                nanoPrice.Text = "Nano Price: $" + currentNanoPrice;
-                nanoPerDay = Math.Round(profit / currentNanoPrice, 4);
-                nanoDaily.Text = "Nano/day: " + nanoPerDay;
+                nanoPrice.Text = "$" + currentNanoPrice;
             } 
         }
 
@@ -250,14 +224,46 @@ namespace QuickMine
             }
         }
 
-        private void sols_Click(object sender, EventArgs e)
+        private void stopButton_Click(object sender, EventArgs e)
         {
-
+            running = false;
+            proc.Kill();
+            NanoAddress.Enabled = true;
+            kwhCost.Enabled = true;
+            Console.Out.WriteLine("Stopped Miner");
+            stopButton.SendToBack();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void leftGPU_Click(object sender, EventArgs e)
         {
+            if (nvidiaIsSelected)
+            {
+                amdIsSelected = true;
+                nvidiaIsSelected = false;
+                NvidiaPicture.SendToBack();
+            }
+            else
+            {
+                nvidiaIsSelected = true;
+                amdIsSelected = false;
+                NvidiaPicture.BringToFront();
+            }
+        }
 
+        private void RightGPU_Click_1(object sender, EventArgs e)
+        {
+            if (nvidiaIsSelected)
+            {
+                amdIsSelected = true;
+                nvidiaIsSelected = false;
+                NvidiaPicture.SendToBack();
+            }
+            else
+            {
+                nvidiaIsSelected = true;
+                amdIsSelected = false;
+                NvidiaPicture.BringToFront();
+            }
         }
     }
 
