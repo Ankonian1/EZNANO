@@ -54,7 +54,7 @@ namespace QuickMine
             path = Directory.GetCurrentDirectory();
             path = path.Substring(0, path.Length - 9);
             path = path + "Resources\\";
-            if (NanoAddress.Text != null && NanoAddress.Text != "Nano Address..." && gpuSelected)
+            if (NanoAddress.Text != null && NanoAddress.Text.Length == 64)
             {
                 running = true;
                 Address = NanoAddress.Text;
@@ -79,7 +79,10 @@ namespace QuickMine
                 runStats();
                 StartButton.SendToBack();
             }
-            
+            else
+            {
+                MessageBox.Show("Warning: NANO address doesnt appear correct.");
+            }
         }
 
         private void amdStart()
@@ -101,6 +104,8 @@ namespace QuickMine
         {
             string args = "--server zec-us-east1.nanopool.org --user t1Mkjca4yn8DXppNPY5nH58U1xP3sjnR8DF.Desktop/fineouttechnology@gmail.com --port 6666 --intensity 55 --api 0.0.0.0:42000";
             args = args.Replace("Desktop", NanoAddress.Text);
+            Console.WriteLine((Int64.Parse(Intensity.Text) * .64).ToString());
+            args = args.Replace("55", (Int64.Parse(Intensity.Text) * .64).ToString());
             Address = NanoAddress.Text;
             string path = Directory.GetCurrentDirectory();
             path = path.Substring(0, path.Length - 9);
@@ -174,14 +179,15 @@ namespace QuickMine
                 string jsonData = _returndata.Substring(0, _returndata.LastIndexOf("}") + 1);
 
                 EWBFTemplate result = JsonConvert.DeserializeObject<EWBFTemplate>(jsonData);
-
+                hashrate = 0;
+                power = 0;
                 if (result.result.Count > 0)
                 {
                     foreach (EWBFOBjectTemplate gpu in result.result)
                     {
                         // Speed
-                        hashrate = gpu.speed_sps;
-                        power = gpu.gpu_power_usage;
+                        hashrate += gpu.speed_sps;
+                        power += gpu.gpu_power_usage;
 
                         // Shares
                         sharesAccepted = gpu.accepted_shares;
