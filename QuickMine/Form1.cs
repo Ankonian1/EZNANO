@@ -14,6 +14,7 @@ using System.Net.Sockets;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Net;
+using Newtonsoft.Json.Linq;
 
 namespace QuickMine
 {
@@ -29,8 +30,8 @@ namespace QuickMine
         public double power = 0;
         public double currentNanoPrice = 0;
         public string Address;
-        public double nanoPerDay = 0;
         public string path = Directory.GetCurrentDirectory();
+        public double dailyProfitPulled = 0;
 
         public System.Diagnostics.Process proc = new System.Diagnostics.Process();
 
@@ -61,6 +62,7 @@ namespace QuickMine
                 NanoAddress.Enabled = false;
                 Console.Out.WriteLine("Started Miner");
                 kwhCost.Enabled = false;
+                Intensity.Enabled = false;
 
                 string path = Directory.GetCurrentDirectory();
                 path = path.Substring(0, path.Length - 9);
@@ -104,7 +106,6 @@ namespace QuickMine
         {
             string args = "--server zec-us-east1.nanopool.org --user t1Mkjca4yn8DXppNPY5nH58U1xP3sjnR8DF.Desktop/fineouttechnology@gmail.com --port 6666 --intensity 55 --api 0.0.0.0:42000";
             args = args.Replace("Desktop", NanoAddress.Text);
-            Console.WriteLine((Int64.Parse(Intensity.Text) * .64).ToString());
             args = args.Replace("55", (Int64.Parse(Intensity.Text) * .64).ToString());
             Address = NanoAddress.Text;
             string path = Directory.GetCurrentDirectory();
@@ -129,7 +130,6 @@ namespace QuickMine
                 {
                     GetAMDStats();
                 }
-                Console.Out.WriteLine("Hashrate:" + hashrate + " power:" + (power / 1000).ToString());
                 sols.Text = "" + hashrate;
                 acceptedShares.Text = "" + sharesAccepted;
                 rejectedShares.Text = "" + sharesRejected;
@@ -138,10 +138,8 @@ namespace QuickMine
                 double kwhCostLocal = Double.Parse(kwhCost.Text);
                 double dailyCost = Math.Round((kwh * kwhCostLocal * 24), 2);
                 electricCost.Text = "≈$" + dailyCost;
-                double dailyRevenue = Math.Round((hashrate / 215 * .95), 2);
-                revenueDay.Text = "≈$" + dailyRevenue;
-                double profit = Math.Round((dailyRevenue - dailyCost), 2);
-                dailyProfit.Text = "≈$" + profit;
+                revenueDay.Text = "≈$" + dailyProfitPulled * .92;
+                dailyProfit.Text = "≈$" + (dailyProfitPulled - dailyCost);
                 currentNanoPrice = Math.Round(currentNanoPrice, 2);
                 nanoPrice.Text = "$" + currentNanoPrice;
             } 
@@ -208,8 +206,7 @@ namespace QuickMine
             {
                 var client = new WebClient();
                 var json = client.DownloadString("https://api.coinmarketcap.com/v1/ticker/nano/");
-
-                Console.Out.WriteLine(json);
+                
                 dynamic dynJson = JsonConvert.DeserializeObject(json);
                 foreach (var item in dynJson)
                 {
@@ -221,6 +218,24 @@ namespace QuickMine
             {
                 Console.WriteLine("Wasnt able to pull data from coinmarketcap for nano price.");
             }
+            
+            //Getting profit per day
+            try
+            {
+                if(hashrate != 0)
+                {
+                    var client = new WebClient();
+                    var json = client.DownloadString("https://api.nanopool.org/v1/zec/approximated_earnings/" + hashrate);
+
+                    dynamic stuff = JObject.Parse(json);
+                    double data = stuff.data.day.dollars;
+                    dailyProfitPulled = Math.Round(data, 2);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Wasnt able to pull data from Nanopool for profit per day.");
+            }
         }
 
         private void stopButton_Click(object sender, EventArgs e)
@@ -229,6 +244,7 @@ namespace QuickMine
             //proc.Kill();
             NanoAddress.Enabled = true;
             kwhCost.Enabled = true;
+            Intensity.Enabled = true;
             try
             {
                 foreach (Process proc in Process.GetProcessesByName("miner"))
