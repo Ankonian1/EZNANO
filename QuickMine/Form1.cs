@@ -51,7 +51,7 @@ namespace QuickMine
 
         private void Start_Click(object sender, EventArgs e)
         {
-            if (NanoAddress.Text != null && NanoAddress.Text.Length == 64)
+            if (NanoAddress.Text != null && NanoAddress.Text.Length == 64 && Int64.Parse(Intensity.Text) < 100 && Int64.Parse(Intensity.Text) > 1)
             {
                 running = true;
                 Address = NanoAddress.Text;
@@ -77,7 +77,14 @@ namespace QuickMine
             }
             else
             {
-                MessageBox.Show("Warning: NANO address doesnt appear correct.");
+                if(NanoAddress.Text == null || NanoAddress.Text.Length != 64)
+                {
+                    MessageBox.Show("Warning: NANO address doesnt appear correct.");
+                }
+                else if(Int64.Parse(Intensity.Text) > 100 || Int64.Parse(Intensity.Text) < 1)
+                {
+                    MessageBox.Show("Warning: Intensity must be between 1 and 100.");
+                }
             }
         }
 
