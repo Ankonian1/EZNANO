@@ -39,8 +39,7 @@ namespace QuickMine
         {
             InitializeComponent();
             path = Directory.GetCurrentDirectory();
-            path = path.Substring(0, path.Length - 9);
-            path = path + "Resources\\";
+            path = path + "\\Resources\\";
             if (File.Exists(path + "address.txt"))
             {
                 path += "address.txt";
@@ -52,9 +51,6 @@ namespace QuickMine
 
         private void Start_Click(object sender, EventArgs e)
         {
-            path = Directory.GetCurrentDirectory();
-            path = path.Substring(0, path.Length - 9);
-            path = path + "Resources\\";
             if (NanoAddress.Text != null && NanoAddress.Text.Length == 64)
             {
                 running = true;
@@ -64,9 +60,7 @@ namespace QuickMine
                 kwhCost.Enabled = false;
                 Intensity.Enabled = false;
 
-                string path = Directory.GetCurrentDirectory();
-                path = path.Substring(0, path.Length - 9);
-                path = path + "Resources\\address.txt";
+                path = path + "address.txt";
                 File.WriteAllText(path, Address);
 
 
@@ -93,8 +87,7 @@ namespace QuickMine
             args = args.Replace("Desktop", NanoAddress.Text);
             Address = NanoAddress.Text;
             string path = Directory.GetCurrentDirectory();
-            path = path.Substring(0, path.Length - 9);
-            path = path + "Resources\\amd\\ZecMiner64.exe";
+            path = path + "\\Resources\\amd\\ZecMiner64.exe";
 
             proc.StartInfo.FileName = path;
             proc.StartInfo.Arguments = args;
@@ -109,8 +102,7 @@ namespace QuickMine
             args = args.Replace("55", (Int64.Parse(Intensity.Text) * .64).ToString());
             Address = NanoAddress.Text;
             string path = Directory.GetCurrentDirectory();
-            path = path.Substring(0, path.Length - 9);
-            path = path + "Resources\\nvidia\\miner.exe";
+            path = path + "\\Resources\\nvidia\\miner.exe";
 
             proc.StartInfo.FileName = path;
             proc.StartInfo.Arguments = args;
