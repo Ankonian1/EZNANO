@@ -408,7 +408,7 @@
             this.Intensity.Name = "Intensity";
             this.Intensity.Size = new System.Drawing.Size(41, 15);
             this.Intensity.TabIndex = 31;
-            this.Intensity.Text = "100";
+            this.Intensity.Text = "75";
             this.Intensity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
