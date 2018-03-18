@@ -469,7 +469,7 @@
             this.VersionNumber.Name = "VersionNumber";
             this.VersionNumber.Size = new System.Drawing.Size(41, 13);
             this.VersionNumber.TabIndex = 35;
-            this.VersionNumber.Text = "V 0.8.2";
+            this.VersionNumber.Text = "V 0.8.3";
             // 
             // EZNANO
             // 

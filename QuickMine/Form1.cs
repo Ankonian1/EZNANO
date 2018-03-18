@@ -24,8 +24,8 @@ namespace EZNANO
         public bool gpuSelected = true;
         public bool running = false;
         public double hashratePulled = 0;
-        public int sharesAccepted = 0;
-        public int sharesRejected = 0;
+        public double sharesAccepted = 0;
+        public double sharesRejected = 0;
         public double power = 0;
         public double currentNanoPrice = 0;
         public string Address;
@@ -176,16 +176,16 @@ namespace EZNANO
         {
             while (running)
             {
-                await Task.Delay(10);
+                await Task.Delay(100);
                 nanoToZecRatio = currentZcashPrice / currentNanoPrice;
                 if (currentNanoPrice > 0 && nanoToZecRatio > 0 && hashratePulled > 0 && networkHashrate > 0 && zecBlockReward > 0)
                 {
                     double coinsPerDay = (567 * 12.5 * hashratePulled) / (networkHashrate);
-                    double coinsPerTenMilliseconds = Math.Round(((coinsPerDay / 8640000) * nanoToZecRatio), 15);
+                    double coinsPerTenMilliseconds = Math.Round(((coinsPerDay / 864000) * nanoToZecRatio), 15);
                     nanoMined += coinsPerTenMilliseconds;
                     if (nanoMined > 0)
                     {
-                        minedLabel.Text = nanoMined.ToString("0.00000000");
+                        minedLabel.Text = ("≈" + nanoMined.ToString("0.00000000"));
                     }
                 }
             }
@@ -346,10 +346,10 @@ namespace EZNANO
                 power = 0;
                 if (result.result.Count > 0)
                 {
-                    string[] response = result.result[3].ToString().Split(';');
+                    string[] response = result.result[2].ToString().Split(';');
                     hashratePulled = double.Parse(response[0]);
-                    sharesAccepted = Int16.Parse(response[1]);
-                    sharesRejected = Int16.Parse(response[2]);
+                    sharesAccepted = double.Parse(response[1]);
+                    sharesRejected = double.Parse(response[2]);
                 }
                 // Close socket
                 clientSocket.Close();
