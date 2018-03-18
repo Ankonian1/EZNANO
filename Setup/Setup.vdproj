@@ -171,12 +171,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_93B1F5B8AB3F43119A474B6F02FED997"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_95B4E9FE3DA84AA4BE387C3786EC4472"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -202,12 +196,6 @@
         "Entry"
         {
         "MsmKey" = "8:_A12721D63CF94BD8B12B77A236D00D0D"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B7877C8D19F442109E1776DB56701B9E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -443,7 +431,7 @@
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_18F56A10F96F48C0A3F25EFD90B26DEA"
             {
             "SourcePath" = "8:..\\QuickMine\\Resources\\amd\\ZecMiner64.exe"
-            "TargetName" = "8:ZecMiner64.exe"
+            "TargetName" = "8:miner.exe"
             "Tag" = "8:"
             "Folder" = "8:_C5F9560BFD5B4B9386C506E1C7DA94F1"
             "Condition" = "8:"
@@ -543,7 +531,7 @@
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3F236A6A65FD4A5FB45C1C0BB837418C"
             {
             "SourcePath" = "8:..\\QuickMine\\Resources\\address.txt"
-            "TargetName" = "8:address.txt"
+            "TargetName" = "8:personal.json"
             "Tag" = "8:"
             "Folder" = "8:_1B3335044F7E49DAB954FF60AF114D16"
             "Condition" = "8:"
@@ -862,26 +850,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_93B1F5B8AB3F43119A474B6F02FED997"
-            {
-            "SourcePath" = "8:..\\QuickMine\\Resources\\amd\\amdstart.bat"
-            "TargetName" = "8:amdstart.bat"
-            "Tag" = "8:"
-            "Folder" = "8:_C5F9560BFD5B4B9386C506E1C7DA94F1"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_95B4E9FE3DA84AA4BE387C3786EC4472"
             {
             "SourcePath" = "8:..\\QuickMine\\Resources\\amd\\Remote manager\\sample.bat"
@@ -957,26 +925,6 @@
             {
             "SourcePath" = "8:..\\QuickMine\\Resources\\amd\\Data1b1.bin"
             "TargetName" = "8:Data1b1.bin"
-            "Tag" = "8:"
-            "Folder" = "8:_C5F9560BFD5B4B9386C506E1C7DA94F1"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B7877C8D19F442109E1776DB56701B9E"
-            {
-            "SourcePath" = "8:..\\QuickMine\\Resources\\amd\\config.txt"
-            "TargetName" = "8:config.txt"
             "Tag" = "8:"
             "Folder" = "8:_C5F9560BFD5B4B9386C506E1C7DA94F1"
             "Condition" = "8:"
@@ -1204,15 +1152,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:EZNANO"
-        "ProductCode" = "8:{2610367C-9BCF-4032-9A4F-EA811DFC0CAB}"
-        "PackageCode" = "8:{5914F792-979E-4B55-B549-C15EDF599BB3}"
+        "ProductCode" = "8:{AF803208-9569-4455-94E7-E0725558ED59}"
+        "PackageCode" = "8:{733B92B6-9256-46B0-805D-8EBAAC0A0B28}"
         "UpgradeCode" = "8:{B6E4858A-C47E-465E-AD83-B3BEF2AB4AA7}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:0.7"
+        "ProductVersion" = "8:0.8"
         "Manufacturer" = "8:Fineout"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1754,7 +1702,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_5B9391BAF5C149ACB7A7E6ADF240E3CC"
             {
-            "SourcePath" = "8:..\\QuickMine\\obj\\Debug\\QuickMine.exe"
+            "SourcePath" = "8:..\\QuickMine\\obj\\Debug\\EZNANO.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_EFBFD5B32B5243BCB919DA341D027850"

@@ -16,7 +16,7 @@ using System.Diagnostics;
 using System.Net;
 using Newtonsoft.Json.Linq;
 
-namespace QuickMine
+namespace EZNANO
 {
     public partial class EZNANO : Form
     {
@@ -24,15 +24,20 @@ namespace QuickMine
         public bool nvidiaIsSelected = true;
         public bool gpuSelected = true;
         public bool running = false;
-        public double hashrate = 0;
+        public double hashratePulled = 0;
         public int sharesAccepted = 0;
         public int sharesRejected = 0;
         public double power = 0;
         public double currentNanoPrice = 0;
         public string Address;
-        public string resourcePath = Directory.GetCurrentDirectory();
+        public static string resourcePath = Directory.GetCurrentDirectory();
         public double dailyProfitPulled = 0;
         public double kwhCostLocal = 0;
+        public double currentZcashPrice = 250;
+        public double nanoMined = 0.0;
+        public double networkHashrate = 467512201;
+        public double nanoToZecRatio = 0;
+        public dynamic personal = new JObject();
 
         public System.Diagnostics.Process proc = new System.Diagnostics.Process();
 
@@ -41,8 +46,16 @@ namespace QuickMine
             InitializeComponent();
 
             resourcePath = Directory.GetCurrentDirectory() + "\\Resources\\";
-            Address = File.ReadAllText(resourcePath + "address.txt");
-            NanoAddress.Text = Address;
+            if(File.ReadAllText(resourcePath + "personal.json") != "")
+            {
+                var json = File.ReadAllText(resourcePath + "personal.json");
+                dynamic dynJson = JsonConvert.DeserializeObject(json);
+                NanoAddress.Text = dynJson.address;
+                kwhCost.Text = dynJson.kWh;
+                Intensity.Text = dynJson.intensity;
+                autoStart.Checked = dynJson.autoStart;
+            }
+            
         }
 
         private void Start_Click(object sender, EventArgs e)
@@ -53,10 +66,23 @@ namespace QuickMine
                 Address = NanoAddress.Text;
                 NanoAddress.Enabled = false;
                 Console.Out.WriteLine("Started Miner");
+                try
+                {
+                    kwhCostLocal = Double.Parse(kwhCost.Text);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("EWBF Exception: " + ex.Message);
+                    string date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                    File.AppendAllText(resourcePath + "debugLog.txt", date + "  Exception: " + ex.Message + System.Environment.NewLine);
+                }
                 kwhCost.Enabled = false;
                 Intensity.Enabled = false;
-                
-                File.WriteAllText(resourcePath + "address.txt", Address);
+                personal.address = NanoAddress.Text;
+                personal.kWh = kwhCost.Text;
+                personal.intensity = Intensity.Text;
+                personal.autoStart = autoStart.Checked;
+                File.WriteAllText(resourcePath + "personal.json", personal.ToString());
 
                 if (amdIsSelected)
                 {
@@ -67,6 +93,7 @@ namespace QuickMine
                     nvidiaStart();
                 }
                 runStats();
+                amountMined();
                 StartButton.SendToBack();
             }
             else
@@ -89,14 +116,12 @@ namespace QuickMine
         private void amdStart()
         {
             string args = "-zpool zec-us-east1.nanopool.org:6666 -zwal t1Mkjca4yn8DXppNPY5nH58U1xP3sjnR8DF.Desktop/fineouttechnology@gmail.com -zpsw z -ftime 1 -i 7 -tt 75";
-            args = args.Replace("Desktop", NanoAddress.Text);
-            Address = NanoAddress.Text;
-            string path = Directory.GetCurrentDirectory();
-            path = path + "\\Resources\\amd\\ZecMiner64.exe";
+            args = args.Replace("Desktop", Address);
+            args = args.Replace("7", (Math.Ceiling(Int64.Parse(Intensity.Text) * .1)).ToString());
 
-            proc.StartInfo.FileName = path;
+            proc.StartInfo.FileName = resourcePath + "amd\\miner.exe";
             proc.StartInfo.Arguments = args;
-            proc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            //proc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             proc.Start();
             string date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
             File.AppendAllText(resourcePath + "debugLog.txt", date + "  Normal: Started AMD Miner." + System.Environment.NewLine);
@@ -106,12 +131,9 @@ namespace QuickMine
         {
             string args = "--server zec-us-east1.nanopool.org --user t1Mkjca4yn8DXppNPY5nH58U1xP3sjnR8DF.Desktop/fineouttechnology@gmail.com --port 6666 --intensity 55 --api 0.0.0.0:42000";
             args = args.Replace("Desktop", NanoAddress.Text);
-            args = args.Replace("55", (Int64.Parse(Intensity.Text) * .64).ToString());
-            Address = NanoAddress.Text;
-            string path = Directory.GetCurrentDirectory();
-            path = path + "\\Resources\\nvidia\\miner.exe";
+            args = args.Replace("55", (Math.Ceiling(Int64.Parse(Intensity.Text) * .64)).ToString());
 
-            proc.StartInfo.FileName = path;
+            proc.StartInfo.FileName = resourcePath + "nvidia\\miner.exe";
             proc.StartInfo.Arguments = args;
             proc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             proc.Start();
@@ -123,7 +145,7 @@ namespace QuickMine
         {
             while (running)
             {
-                await Task.Delay(30000);
+                await Task.Delay(3000);
                 if (nvidiaIsSelected)
                 {
                     GetNvidiaStats();
@@ -131,28 +153,39 @@ namespace QuickMine
                 {
                     GetAMDStats();
                 }
-                sols.Text = "" + hashrate;
+                sols.Text = "" + hashratePulled;
                 acceptedShares.Text = "" + sharesAccepted;
                 rejectedShares.Text = "" + sharesRejected;
                 double kwh = (power / 1000);
                 kWh.Text = "" + kwh;
-                try
-                {
-                    kwhCostLocal = Double.Parse(kwhCost.Text);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("EWBF Exception: " + ex.Message);
-                    string date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
-                    File.AppendAllText(resourcePath + "debugLog.txt", date + "  Exception: " + ex.Message + System.Environment.NewLine);
-                }
+                
                 double dailyCost = Math.Round((kwh * kwhCostLocal * 24), 2);
                 electricCost.Text = "≈$" + dailyCost;
-                revenueDay.Text = "≈$" + dailyProfitPulled * .92;
-                dailyProfit.Text = "≈$" + (dailyProfitPulled - dailyCost);
+                double revenue = dailyProfitPulled * .92;
+                revenueDay.Text = "≈$" + revenue;
+                dailyProfit.Text = "≈$" + (revenue - dailyCost);
                 currentNanoPrice = Math.Round(currentNanoPrice, 2);
                 nanoPrice.Text = "$" + currentNanoPrice;
             } 
+        }
+
+        public async Task amountMined()
+        {
+            while (running)
+            {
+                await Task.Delay(10);
+                nanoToZecRatio = currentZcashPrice / currentNanoPrice;
+                if (currentNanoPrice > 0 && nanoToZecRatio > 0 && hashratePulled > 0 && networkHashrate > 0)
+                {
+                    double coinsPerDay = (567 * 12.5 * 500) / (477000000);
+                    double coinsPerTenMilliseconds = Math.Round(((coinsPerDay / 8640000) * nanoToZecRatio), 15);
+                    nanoMined += coinsPerTenMilliseconds;
+                    if (nanoMined > 0)
+                    {
+                        minedLabel.Text = nanoMined.ToString("0.00000000");
+                    }
+                }
+            }
         }
 
         private async void GetAMDStats()
@@ -193,14 +226,14 @@ namespace QuickMine
                 string jsonData = _returndata.Substring(0, _returndata.LastIndexOf("}") + 1);
 
                 EWBFTemplate result = JsonConvert.DeserializeObject<EWBFTemplate>(jsonData);
-                hashrate = 0;
+                hashratePulled = 0;
                 power = 0;
                 if (result.result.Count > 0)
                 {
                     foreach (EWBFOBjectTemplate gpu in result.result)
                     {
                         // Speed
-                        hashrate += gpu.speed_sps;
+                        //hashratePulled += gpu.speed_sps;
                         power += gpu.gpu_power_usage;
 
                         // Shares
@@ -220,6 +253,7 @@ namespace QuickMine
                 File.AppendAllText(resourcePath + "debugLog.txt", date + "  Exception: " + ex.Message + System.Environment.NewLine);
             }
 
+            //Getting NANO Price
             try
             {
                 string date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
@@ -241,16 +275,67 @@ namespace QuickMine
                 string date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
                 File.AppendAllText(resourcePath + "debugLog.txt", date + "  Exception: " + ex.Message + System.Environment.NewLine);
             }
-            
+
+            //Getting ZEC network Hashrate
+            /*try
+            {
+                string date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                File.AppendAllText(resourcePath + "debugLog.txt", date + "  Normal: Attempting to connect to coinmarketcap." + System.Environment.NewLine);
+                var client = new WebClient();
+                var json = client.DownloadString("https://whattomine.com/coins.json");
+                date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                File.AppendAllText(resourcePath + "debugLog.txt", date + "  Normal: Connection to coinmarketcap Successful." + System.Environment.NewLine);
+                dynamic dynJson = JsonConvert.DeserializeObject(json);
+                foreach (var item in dynJson.coins)
+                {
+                    if (dynJson.coins.tag == "ZEC")
+                    {
+                        networkHashrate = item.price_usd;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Wasnt able to pull data from coinmarketcap for nano price.");
+                string date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                File.AppendAllText(resourcePath + "debugLog.txt", date + "  Exception: " + ex.Message + System.Environment.NewLine);
+            }
+            */
+
+            //Getting Current Hashrate
+            try
+            {
+                string date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                File.AppendAllText(resourcePath + "debugLog.txt", date + "  Normal: Attempting to connect to nanopool for current Hashrate." + System.Environment.NewLine);
+                var client = new WebClient();
+                var json = client.DownloadString("https://api.nanopool.org/v1/zec/workers/t1Mkjca4yn8DXppNPY5nH58U1xP3sjnR8DF");
+                date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                File.AppendAllText(resourcePath + "debugLog.txt", date + "  Normal: Connection to nanopool successful." + System.Environment.NewLine);
+                dynamic stuff = JObject.Parse(json);
+                foreach (var item in stuff.data)
+                {
+                    if(item.id == NanoAddress.Text)
+                    {
+                        hashratePulled = item.hashrate;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                File.AppendAllText(resourcePath + "debugLog.txt", date + "  Exception: " + ex.Message + System.Environment.NewLine);
+            }
+
             //Getting profit per day
             try
             {
-                if(hashrate != 0)
+                if(hashratePulled != 0)
                 {
                     string date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
-                    File.AppendAllText(resourcePath + "debugLog.txt", date + "  Normal: Attempting to connect to nanopool." + System.Environment.NewLine);
+                    File.AppendAllText(resourcePath + "debugLog.txt", date + "  Normal: Attempting to connect to nanopool for profit per day." + System.Environment.NewLine);
                     var client = new WebClient();
-                    var json = client.DownloadString("https://api.nanopool.org/v1/zec/approximated_earnings/" + hashrate);
+                    var json = client.DownloadString("https://api.nanopool.org/v1/zec/approximated_earnings/" + hashratePulled);
                     date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
                     File.AppendAllText(resourcePath + "debugLog.txt", date + "  Normal: Connection to nanopool successful." + System.Environment.NewLine);
                     dynamic stuff = JObject.Parse(json);
@@ -273,6 +358,13 @@ namespace QuickMine
             NanoAddress.Enabled = true;
             kwhCost.Enabled = true;
             Intensity.Enabled = true;
+            kwhCost.Enabled = false;
+            Intensity.Enabled = false;
+            personal.address = NanoAddress.Text;
+            personal.kWh = kwhCost.Text;
+            personal.intensity = Intensity.Text;
+            personal.autoStart = autoStart.Checked;
+            File.WriteAllText(resourcePath + "personal.json", personal.ToString());
             try
             {
                 foreach (Process proc in Process.GetProcessesByName("miner"))
@@ -329,6 +421,42 @@ namespace QuickMine
                 string date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
                 File.AppendAllText(resourcePath + "debugLog.txt", date + "  Normal: Nvidia is selected." + System.Environment.NewLine);
             }
+        }
+
+        private void autoStart_CheckedChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            try
+            {
+                foreach (Process proc in Process.GetProcessesByName("miner"))
+                {
+                    proc.Kill();
+                }
+                string date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                File.AppendAllText(resourcePath + "debugLog.txt", date + "  Normal: Killed the Miner process via the X button" + System.Environment.NewLine);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Wasnt able to kill the miner process");
+                string date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                File.AppendAllText(resourcePath + "debugLog.txt", date + "  Warning: Wasn't able to kill the miner process via the X button!" + ex.Message + System.Environment.NewLine);
+            }
+        }
+
+        private void EZNANO_Load(object sender, EventArgs e)
+        {
+            if (autoStart.Checked)
+            {
+                StartButton.PerformClick();
+            }
+            /*if (File.ReadLines(resourcePath + "debugLog.txt").Count() > 100)
+            {
+                string temp = File.ReadLines(resourcePath + "debugLog.txt").Reverse().Take(100).ToString();
+                File.WriteAllText(resourcePath + "debugLog.txt", temp);
+            }*/
         }
     }
 

@@ -1,4 +1,4 @@
-﻿namespace QuickMine
+﻿namespace EZNANO
 {
     partial class EZNANO
     {
@@ -59,6 +59,9 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Intensity = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.minedLabel = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.autoStart = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.NvidiaPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -83,7 +86,7 @@
             this.StartButton.FlatAppearance.BorderSize = 0;
             this.StartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StartButton.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StartButton.Location = new System.Drawing.Point(1, 608);
+            this.StartButton.Location = new System.Drawing.Point(1, 671);
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(383, 110);
             this.StartButton.TabIndex = 1;
@@ -108,11 +111,11 @@
             this.dailyProfit.BackColor = System.Drawing.Color.Transparent;
             this.dailyProfit.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dailyProfit.ForeColor = System.Drawing.Color.Green;
-            this.dailyProfit.Location = new System.Drawing.Point(12, 441);
+            this.dailyProfit.Location = new System.Drawing.Point(12, 504);
             this.dailyProfit.Name = "dailyProfit";
             this.dailyProfit.Size = new System.Drawing.Size(179, 42);
             this.dailyProfit.TabIndex = 6;
-            this.dailyProfit.Text = "$";
+            this.dailyProfit.Text = "≈$0";
             this.dailyProfit.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // revenueDay
@@ -120,11 +123,11 @@
             this.revenueDay.BackColor = System.Drawing.Color.Transparent;
             this.revenueDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.revenueDay.ForeColor = System.Drawing.Color.Green;
-            this.revenueDay.Location = new System.Drawing.Point(1, 512);
+            this.revenueDay.Location = new System.Drawing.Point(1, 575);
             this.revenueDay.Name = "revenueDay";
             this.revenueDay.Size = new System.Drawing.Size(124, 35);
             this.revenueDay.TabIndex = 5;
-            this.revenueDay.Text = "$";
+            this.revenueDay.Text = "≈$0";
             this.revenueDay.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // electricCost
@@ -132,11 +135,11 @@
             this.electricCost.BackColor = System.Drawing.Color.Transparent;
             this.electricCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.electricCost.ForeColor = System.Drawing.Color.Green;
-            this.electricCost.Location = new System.Drawing.Point(65, 512);
+            this.electricCost.Location = new System.Drawing.Point(65, 575);
             this.electricCost.Name = "electricCost";
             this.electricCost.Size = new System.Drawing.Size(256, 25);
             this.electricCost.TabIndex = 4;
-            this.electricCost.Text = "$";
+            this.electricCost.Text = "≈$0";
             this.electricCost.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // kWh
@@ -144,7 +147,7 @@
             this.kWh.BackColor = System.Drawing.Color.Transparent;
             this.kWh.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kWh.ForeColor = System.Drawing.Color.Green;
-            this.kWh.Location = new System.Drawing.Point(258, 512);
+            this.kWh.Location = new System.Drawing.Point(258, 575);
             this.kWh.Name = "kWh";
             this.kWh.Size = new System.Drawing.Size(126, 35);
             this.kWh.TabIndex = 3;
@@ -156,7 +159,7 @@
             this.rejectedShares.BackColor = System.Drawing.Color.Transparent;
             this.rejectedShares.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rejectedShares.ForeColor = System.Drawing.Color.OrangeRed;
-            this.rejectedShares.Location = new System.Drawing.Point(1, 576);
+            this.rejectedShares.Location = new System.Drawing.Point(1, 639);
             this.rejectedShares.Name = "rejectedShares";
             this.rejectedShares.Size = new System.Drawing.Size(383, 29);
             this.rejectedShares.TabIndex = 2;
@@ -168,7 +171,7 @@
             this.acceptedShares.BackColor = System.Drawing.Color.Transparent;
             this.acceptedShares.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.acceptedShares.ForeColor = System.Drawing.Color.Green;
-            this.acceptedShares.Location = new System.Drawing.Point(2, 576);
+            this.acceptedShares.Location = new System.Drawing.Point(2, 639);
             this.acceptedShares.Name = "acceptedShares";
             this.acceptedShares.Size = new System.Drawing.Size(122, 29);
             this.acceptedShares.TabIndex = 1;
@@ -180,7 +183,7 @@
             this.sols.BackColor = System.Drawing.Color.Transparent;
             this.sols.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sols.ForeColor = System.Drawing.Color.Green;
-            this.sols.Location = new System.Drawing.Point(258, 576);
+            this.sols.Location = new System.Drawing.Point(258, 639);
             this.sols.Name = "sols";
             this.sols.Size = new System.Drawing.Size(126, 29);
             this.sols.TabIndex = 0;
@@ -215,11 +218,11 @@
             this.nanoPrice.BackColor = System.Drawing.Color.Transparent;
             this.nanoPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nanoPrice.ForeColor = System.Drawing.Color.Green;
-            this.nanoPrice.Location = new System.Drawing.Point(191, 441);
+            this.nanoPrice.Location = new System.Drawing.Point(191, 504);
             this.nanoPrice.Name = "nanoPrice";
             this.nanoPrice.Size = new System.Drawing.Size(176, 42);
             this.nanoPrice.TabIndex = 12;
-            this.nanoPrice.Text = "$";
+            this.nanoPrice.Text = "$0";
             this.nanoPrice.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label1
@@ -278,7 +281,7 @@
             // 
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 412);
+            this.label4.Location = new System.Drawing.Point(12, 475);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(183, 29);
             this.label4.TabIndex = 18;
@@ -289,7 +292,7 @@
             // 
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(192, 412);
+            this.label5.Location = new System.Drawing.Point(192, 475);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(181, 29);
             this.label5.TabIndex = 19;
@@ -300,7 +303,7 @@
             // 
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(1, 483);
+            this.label6.Location = new System.Drawing.Point(1, 546);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(124, 29);
             this.label6.TabIndex = 20;
@@ -311,7 +314,7 @@
             // 
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(65, 483);
+            this.label7.Location = new System.Drawing.Point(65, 546);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(256, 29);
             this.label7.TabIndex = 21;
@@ -322,7 +325,7 @@
             // 
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(259, 483);
+            this.label8.Location = new System.Drawing.Point(259, 546);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(125, 29);
             this.label8.TabIndex = 22;
@@ -333,7 +336,7 @@
             // 
             this.REJECTEDLABEL.BackColor = System.Drawing.Color.Transparent;
             this.REJECTEDLABEL.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.REJECTEDLABEL.Location = new System.Drawing.Point(1, 547);
+            this.REJECTEDLABEL.Location = new System.Drawing.Point(1, 610);
             this.REJECTEDLABEL.Name = "REJECTEDLABEL";
             this.REJECTEDLABEL.Size = new System.Drawing.Size(383, 29);
             this.REJECTEDLABEL.TabIndex = 23;
@@ -344,7 +347,7 @@
             // 
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(257, 547);
+            this.label9.Location = new System.Drawing.Point(257, 610);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(127, 29);
             this.label9.TabIndex = 24;
@@ -355,7 +358,7 @@
             // 
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(1, 547);
+            this.label10.Location = new System.Drawing.Point(1, 610);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(123, 29);
             this.label10.TabIndex = 25;
@@ -381,7 +384,7 @@
             this.stopButton.FlatAppearance.BorderSize = 0;
             this.stopButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.stopButton.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stopButton.Location = new System.Drawing.Point(1, 608);
+            this.stopButton.Location = new System.Drawing.Point(1, 671);
             this.stopButton.Name = "stopButton";
             this.stopButton.Size = new System.Drawing.Size(383, 110);
             this.stopButton.TabIndex = 28;
@@ -423,6 +426,41 @@
             this.label3.Text = "Intensity (1-100):";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // minedLabel
+            // 
+            this.minedLabel.BackColor = System.Drawing.Color.Transparent;
+            this.minedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.minedLabel.ForeColor = System.Drawing.Color.Green;
+            this.minedLabel.Location = new System.Drawing.Point(1, 424);
+            this.minedLabel.Name = "minedLabel";
+            this.minedLabel.Size = new System.Drawing.Size(379, 42);
+            this.minedLabel.TabIndex = 32;
+            this.minedLabel.Text = "0.00000000";
+            this.minedLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label12
+            // 
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(1, 395);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(383, 29);
+            this.label12.TabIndex = 33;
+            this.label12.Text = "NANO MINED";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // autoStart
+            // 
+            this.autoStart.AutoSize = true;
+            this.autoStart.BackColor = System.Drawing.Color.Transparent;
+            this.autoStart.Location = new System.Drawing.Point(300, 12);
+            this.autoStart.Name = "autoStart";
+            this.autoStart.Size = new System.Drawing.Size(70, 17);
+            this.autoStart.TabIndex = 34;
+            this.autoStart.Text = "AutoStart";
+            this.autoStart.UseVisualStyleBackColor = false;
+            this.autoStart.CheckedChanged += new System.EventHandler(this.autoStart_CheckedChanged);
+            // 
             // EZNANO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -430,7 +468,10 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(384, 718);
+            this.ClientSize = new System.Drawing.Size(384, 780);
+            this.Controls.Add(this.autoStart);
+            this.Controls.Add(this.minedLabel);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.Intensity);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.acceptedShares);
@@ -464,6 +505,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EZNANO";
             this.Text = "EZ NANO";
+            this.Load += new System.EventHandler(this.EZNANO_Load);
             ((System.ComponentModel.ISupportInitialize)(this.NvidiaPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -504,6 +546,9 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox Intensity;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label minedLabel;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.CheckBox autoStart;
     }
 }
 
