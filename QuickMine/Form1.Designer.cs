@@ -436,7 +436,7 @@
             this.minedLabel.Name = "minedLabel";
             this.minedLabel.Size = new System.Drawing.Size(379, 42);
             this.minedLabel.TabIndex = 32;
-            this.minedLabel.Text = "0.00000000";
+            this.minedLabel.Text = "≈0.00000000";
             this.minedLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label12
@@ -469,7 +469,7 @@
             this.VersionNumber.Name = "VersionNumber";
             this.VersionNumber.Size = new System.Drawing.Size(41, 13);
             this.VersionNumber.TabIndex = 35;
-            this.VersionNumber.Text = "V 0.8.3";
+            this.VersionNumber.Text = "V 0.8.4";
             // 
             // EZNANO
             // 
