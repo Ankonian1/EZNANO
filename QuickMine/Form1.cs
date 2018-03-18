@@ -341,7 +341,7 @@ namespace EZNANO
                 string _returndata = System.Text.Encoding.ASCII.GetString(inStream);
                 string jsonData = _returndata.Substring(0, _returndata.LastIndexOf("}") + 1);
 
-                EWBFTemplate result = JsonConvert.DeserializeObject<EWBFTemplate>(jsonData);
+                dynamic result = JObject.Parse(jsonData);
                 hashratePulled = 0;
                 power = 0;
                 if (result.result.Count > 0)

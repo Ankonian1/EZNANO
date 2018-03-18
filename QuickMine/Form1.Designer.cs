@@ -467,9 +467,9 @@
             this.VersionNumber.BackColor = System.Drawing.Color.Transparent;
             this.VersionNumber.Location = new System.Drawing.Point(5, 12);
             this.VersionNumber.Name = "VersionNumber";
-            this.VersionNumber.Size = new System.Drawing.Size(32, 13);
+            this.VersionNumber.Size = new System.Drawing.Size(41, 13);
             this.VersionNumber.TabIndex = 35;
-            this.VersionNumber.Text = "V 0.8";
+            this.VersionNumber.Text = "V 0.8.1";
             // 
             // EZNANO
             // 

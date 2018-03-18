@@ -226,12 +226,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A001824AAE4C8FA85AF6D60D00D950D3"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_5B9391BAF5C149ACB7A7E6ADF240E3CC"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -245,6 +239,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_7D5F9AE74E04711FF828E02D81232D16"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_A001824AAE4C8FA85AF6D60D00D950D3"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -1126,19 +1126,19 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:EZNANO"
-        "ProductCode" = "8:{EA76FB48-E86C-4B43-9D71-77422FE5D578}"
-        "PackageCode" = "8:{4453AD3D-5B84-4178-9E5C-CE9D49197DEE}"
+        "ProductCode" = "8:{B2D18549-6FB2-445B-A7DC-6828FADED14F}"
+        "PackageCode" = "8:{7D5ED290-62EE-4E2F-810A-F1F9D7A27F17}"
         "UpgradeCode" = "8:{B6E4858A-C47E-465E-AD83-B3BEF2AB4AA7}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:0.8"
+        "ProductVersion" = "8:0.8.1"
         "Manufacturer" = "8:Fineout"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:EZNANO-Setup-0.8"
+        "Title" = "8:EZNANO-Setup-0.8.1"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Ayrton Fineout"
         "Keywords" = "8:"
