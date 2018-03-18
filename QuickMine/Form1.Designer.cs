@@ -62,6 +62,7 @@
             this.minedLabel = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.autoStart = new System.Windows.Forms.CheckBox();
+            this.VersionNumber = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.NvidiaPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -459,7 +460,16 @@
             this.autoStart.TabIndex = 34;
             this.autoStart.Text = "AutoStart";
             this.autoStart.UseVisualStyleBackColor = false;
-            this.autoStart.CheckedChanged += new System.EventHandler(this.autoStart_CheckedChanged);
+            // 
+            // VersionNumber
+            // 
+            this.VersionNumber.AutoSize = true;
+            this.VersionNumber.BackColor = System.Drawing.Color.Transparent;
+            this.VersionNumber.Location = new System.Drawing.Point(5, 12);
+            this.VersionNumber.Name = "VersionNumber";
+            this.VersionNumber.Size = new System.Drawing.Size(32, 13);
+            this.VersionNumber.TabIndex = 35;
+            this.VersionNumber.Text = "V 0.8";
             // 
             // EZNANO
             // 
@@ -469,6 +479,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(384, 780);
+            this.Controls.Add(this.VersionNumber);
             this.Controls.Add(this.autoStart);
             this.Controls.Add(this.minedLabel);
             this.Controls.Add(this.label12);
@@ -505,6 +516,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EZNANO";
             this.Text = "EZ NANO";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EZNANO_FormClosing);
             this.Load += new System.EventHandler(this.EZNANO_Load);
             ((System.ComponentModel.ISupportInitialize)(this.NvidiaPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -549,6 +561,7 @@
         private System.Windows.Forms.Label minedLabel;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckBox autoStart;
+        private System.Windows.Forms.Label VersionNumber;
     }
 }
 
