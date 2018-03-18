@@ -469,7 +469,7 @@
             this.VersionNumber.Name = "VersionNumber";
             this.VersionNumber.Size = new System.Drawing.Size(41, 13);
             this.VersionNumber.TabIndex = 35;
-            this.VersionNumber.Text = "V 0.8.1";
+            this.VersionNumber.Text = "V 0.8.2";
             // 
             // EZNANO
             // 
@@ -513,6 +513,7 @@
             this.Controls.Add(this.rejectedShares);
             this.Controls.Add(this.StartButton);
             this.Controls.Add(this.stopButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EZNANO";
             this.Text = "EZ NANO";

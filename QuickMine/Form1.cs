@@ -348,8 +348,8 @@ namespace EZNANO
                 {
                     string[] response = result.result[3].ToString().Split(';');
                     hashratePulled = double.Parse(response[0]);
-                    sharesAccepted = Int32.Parse(response[1]);
-                    sharesRejected = Int32.Parse(response[2]);
+                    sharesAccepted = Int16.Parse(response[1]);
+                    sharesRejected = Int16.Parse(response[2]);
                 }
                 // Close socket
                 clientSocket.Close();
