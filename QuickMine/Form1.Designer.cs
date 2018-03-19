@@ -63,6 +63,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.autoStart = new System.Windows.Forms.CheckBox();
             this.VersionNumber = new System.Windows.Forms.Label();
+            this.resetNano = new System.Windows.Forms.Button();
+            this.showCMD = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.NvidiaPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -98,7 +100,7 @@
             // selectGPUText
             // 
             this.selectGPUText.BackColor = System.Drawing.Color.Transparent;
-            this.selectGPUText.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectGPUText.Font = new System.Drawing.Font("Montserrat", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.selectGPUText.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.selectGPUText.Location = new System.Drawing.Point(1, 48);
             this.selectGPUText.Name = "selectGPUText";
@@ -110,7 +112,7 @@
             // dailyProfit
             // 
             this.dailyProfit.BackColor = System.Drawing.Color.Transparent;
-            this.dailyProfit.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dailyProfit.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dailyProfit.ForeColor = System.Drawing.Color.Green;
             this.dailyProfit.Location = new System.Drawing.Point(12, 504);
             this.dailyProfit.Name = "dailyProfit";
@@ -122,7 +124,7 @@
             // revenueDay
             // 
             this.revenueDay.BackColor = System.Drawing.Color.Transparent;
-            this.revenueDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.revenueDay.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.revenueDay.ForeColor = System.Drawing.Color.Green;
             this.revenueDay.Location = new System.Drawing.Point(1, 575);
             this.revenueDay.Name = "revenueDay";
@@ -134,7 +136,7 @@
             // electricCost
             // 
             this.electricCost.BackColor = System.Drawing.Color.Transparent;
-            this.electricCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.electricCost.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.electricCost.ForeColor = System.Drawing.Color.Green;
             this.electricCost.Location = new System.Drawing.Point(65, 575);
             this.electricCost.Name = "electricCost";
@@ -146,7 +148,7 @@
             // kWh
             // 
             this.kWh.BackColor = System.Drawing.Color.Transparent;
-            this.kWh.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kWh.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kWh.ForeColor = System.Drawing.Color.Green;
             this.kWh.Location = new System.Drawing.Point(258, 575);
             this.kWh.Name = "kWh";
@@ -158,7 +160,7 @@
             // rejectedShares
             // 
             this.rejectedShares.BackColor = System.Drawing.Color.Transparent;
-            this.rejectedShares.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rejectedShares.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rejectedShares.ForeColor = System.Drawing.Color.OrangeRed;
             this.rejectedShares.Location = new System.Drawing.Point(1, 639);
             this.rejectedShares.Name = "rejectedShares";
@@ -170,7 +172,7 @@
             // acceptedShares
             // 
             this.acceptedShares.BackColor = System.Drawing.Color.Transparent;
-            this.acceptedShares.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.acceptedShares.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.acceptedShares.ForeColor = System.Drawing.Color.Green;
             this.acceptedShares.Location = new System.Drawing.Point(2, 639);
             this.acceptedShares.Name = "acceptedShares";
@@ -182,7 +184,7 @@
             // sols
             // 
             this.sols.BackColor = System.Drawing.Color.Transparent;
-            this.sols.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sols.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sols.ForeColor = System.Drawing.Color.Green;
             this.sols.Location = new System.Drawing.Point(258, 639);
             this.sols.Name = "sols";
@@ -194,7 +196,7 @@
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label2.Location = new System.Drawing.Point(2, 270);
             this.label2.Name = "label2";
@@ -206,10 +208,10 @@
             // kwhCost
             // 
             this.kwhCost.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.kwhCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kwhCost.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.kwhCost.Location = new System.Drawing.Point(70, 298);
             this.kwhCost.Name = "kwhCost";
-            this.kwhCost.Size = new System.Drawing.Size(41, 15);
+            this.kwhCost.Size = new System.Drawing.Size(41, 16);
             this.kwhCost.TabIndex = 11;
             this.kwhCost.Text = "0.1";
             this.kwhCost.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -217,7 +219,7 @@
             // nanoPrice
             // 
             this.nanoPrice.BackColor = System.Drawing.Color.Transparent;
-            this.nanoPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nanoPrice.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nanoPrice.ForeColor = System.Drawing.Color.Green;
             this.nanoPrice.Location = new System.Drawing.Point(191, 504);
             this.nanoPrice.Name = "nanoPrice";
@@ -229,7 +231,7 @@
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Montserrat", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(1, 331);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(383, 31);
@@ -281,7 +283,7 @@
             // label4
             // 
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Montserrat", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(12, 475);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(183, 29);
@@ -292,7 +294,7 @@
             // label5
             // 
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Montserrat", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(192, 475);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(181, 29);
@@ -303,7 +305,7 @@
             // label6
             // 
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(1, 546);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(124, 29);
@@ -314,7 +316,7 @@
             // label7
             // 
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(65, 546);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(256, 29);
@@ -325,7 +327,7 @@
             // label8
             // 
             this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(259, 546);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(125, 29);
@@ -336,7 +338,7 @@
             // REJECTEDLABEL
             // 
             this.REJECTEDLABEL.BackColor = System.Drawing.Color.Transparent;
-            this.REJECTEDLABEL.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.REJECTEDLABEL.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.REJECTEDLABEL.Location = new System.Drawing.Point(1, 610);
             this.REJECTEDLABEL.Name = "REJECTEDLABEL";
             this.REJECTEDLABEL.Size = new System.Drawing.Size(383, 29);
@@ -347,7 +349,7 @@
             // label9
             // 
             this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(257, 610);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(127, 29);
@@ -358,7 +360,7 @@
             // label10
             // 
             this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(1, 610);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(123, 29);
@@ -407,10 +409,10 @@
             // Intensity
             // 
             this.Intensity.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Intensity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Intensity.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Intensity.Location = new System.Drawing.Point(263, 298);
             this.Intensity.Name = "Intensity";
-            this.Intensity.Size = new System.Drawing.Size(41, 15);
+            this.Intensity.Size = new System.Drawing.Size(41, 16);
             this.Intensity.TabIndex = 31;
             this.Intensity.Text = "75";
             this.Intensity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -418,7 +420,7 @@
             // label3
             // 
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label3.Location = new System.Drawing.Point(195, 270);
             this.label3.Name = "label3";
@@ -430,7 +432,7 @@
             // minedLabel
             // 
             this.minedLabel.BackColor = System.Drawing.Color.Transparent;
-            this.minedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.minedLabel.Font = new System.Drawing.Font("Montserrat", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.minedLabel.ForeColor = System.Drawing.Color.Green;
             this.minedLabel.Location = new System.Drawing.Point(1, 424);
             this.minedLabel.Name = "minedLabel";
@@ -442,7 +444,7 @@
             // label12
             // 
             this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Montserrat", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(1, 395);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(383, 29);
@@ -454,9 +456,10 @@
             // 
             this.autoStart.AutoSize = true;
             this.autoStart.BackColor = System.Drawing.Color.Transparent;
+            this.autoStart.Font = new System.Drawing.Font("Montserrat", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.autoStart.Location = new System.Drawing.Point(300, 12);
             this.autoStart.Name = "autoStart";
-            this.autoStart.Size = new System.Drawing.Size(70, 17);
+            this.autoStart.Size = new System.Drawing.Size(80, 18);
             this.autoStart.TabIndex = 34;
             this.autoStart.Text = "AutoStart";
             this.autoStart.UseVisualStyleBackColor = false;
@@ -465,11 +468,34 @@
             // 
             this.VersionNumber.AutoSize = true;
             this.VersionNumber.BackColor = System.Drawing.Color.Transparent;
+            this.VersionNumber.Font = new System.Drawing.Font("Montserrat", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VersionNumber.Location = new System.Drawing.Point(5, 12);
             this.VersionNumber.Name = "VersionNumber";
-            this.VersionNumber.Size = new System.Drawing.Size(41, 13);
+            this.VersionNumber.Size = new System.Drawing.Size(36, 14);
             this.VersionNumber.TabIndex = 35;
-            this.VersionNumber.Text = "V 0.8.4";
+            this.VersionNumber.Text = "V 0.9";
+            // 
+            // resetNano
+            // 
+            this.resetNano.Location = new System.Drawing.Point(298, 427);
+            this.resetNano.Name = "resetNano";
+            this.resetNano.Size = new System.Drawing.Size(75, 23);
+            this.resetNano.TabIndex = 36;
+            this.resetNano.Text = "Reset";
+            this.resetNano.UseVisualStyleBackColor = true;
+            this.resetNano.Click += new System.EventHandler(this.resetNano_Click);
+            // 
+            // showCMD
+            // 
+            this.showCMD.AutoSize = true;
+            this.showCMD.BackColor = System.Drawing.Color.Transparent;
+            this.showCMD.Font = new System.Drawing.Font("Montserrat", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.showCMD.Location = new System.Drawing.Point(300, 36);
+            this.showCMD.Name = "showCMD";
+            this.showCMD.Size = new System.Drawing.Size(88, 18);
+            this.showCMD.TabIndex = 37;
+            this.showCMD.Text = "Show CMD";
+            this.showCMD.UseVisualStyleBackColor = false;
             // 
             // EZNANO
             // 
@@ -479,6 +505,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(384, 780);
+            this.Controls.Add(this.showCMD);
+            this.Controls.Add(this.resetNano);
             this.Controls.Add(this.VersionNumber);
             this.Controls.Add(this.autoStart);
             this.Controls.Add(this.minedLabel);
@@ -563,6 +591,8 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckBox autoStart;
         private System.Windows.Forms.Label VersionNumber;
+        private System.Windows.Forms.Button resetNano;
+        private System.Windows.Forms.CheckBox showCMD;
     }
 }
 

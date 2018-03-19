@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Net;
 using Newtonsoft.Json.Linq;
+using System.Net.NetworkInformation;
 
 namespace EZNANO
 {
@@ -38,7 +39,8 @@ namespace EZNANO
         public double nanoToZecRatio = 0;
         public dynamic personal = new JObject();
         public double kwh = 0;
-        public double zecBlockReward = 12.5;
+        public double zecBlockReward = 10;
+        public string closestServer = "zec-us-east1.nanopool.org";
 
         public System.Diagnostics.Process proc = new System.Diagnostics.Process();
 
@@ -56,6 +58,8 @@ namespace EZNANO
                 Intensity.Text = dynJson.intensity;
                 autoStart.Checked = dynJson.autoStart;
                 graphics = dynJson.graphics;
+                nanoMined = dynJson.nanoMined;
+                minedLabel.Text = ("≈" + nanoMined.ToString("0.00000000"));
             }
             
         }
@@ -67,6 +71,33 @@ namespace EZNANO
                 running = true;
                 Address = NanoAddress.Text;
                 NanoAddress.Enabled = false;
+                leftGPU.Enabled = false;
+                RightGPU.Enabled = false;
+                showCMD.Enabled = false;
+
+                string data = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+                byte[] buffer = Encoding.ASCII.GetBytes(data);
+                Ping ping = new Ping();
+                double rtTime = double.MaxValue;
+                string[] servers = new string[] { "zec-us-east1.nanopool.org", "zec-eu1.nanopool.org", "zec-asia1.nanopool.org", "zec-jp1.nanopool.org", "zec-au1.nanopool.org", "zec-us-west1.nanopool.org", "zec-eu2.nanopool.org" };
+                int timeout = 10000;
+                PingOptions options = new PingOptions(64, true);
+
+                for(int i = 0; i < servers.Length; i++)
+                {
+                    PingReply reply = ping.Send(servers[i], timeout, buffer, options);
+                    if (reply.Status == IPStatus.Success)
+                    {
+                        if(reply.RoundtripTime < rtTime)
+                        {
+                            rtTime = reply.RoundtripTime;
+                            closestServer = servers[i];
+                        }
+                    }
+                }
+                string date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                File.AppendAllText(resourcePath + "debugLog.txt", date + "  Normal: Closest server is " + closestServer + System.Environment.NewLine);
+
                 Console.Out.WriteLine("Started Miner");
                 try
                 {
@@ -75,7 +106,7 @@ namespace EZNANO
                 catch (Exception ex)
                 {
                     Console.WriteLine("EWBF Exception: " + ex.Message);
-                    string date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                    date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
                     File.AppendAllText(resourcePath + "debugLog.txt", date + "  Exception: " + ex.Message + System.Environment.NewLine);
                 }
                 kwhCost.Enabled = false;
@@ -118,13 +149,21 @@ namespace EZNANO
 
         private void amdStart()
         {
-            string args = "-zpool zec-us-east1.nanopool.org:6666 -zwal t1Mkjca4yn8DXppNPY5nH58U1xP3sjnR8DF.Desktop/fineouttechnology@gmail.com -zpsw z -ftime 1 -i 7 -tt 75";
+            string args = "-zpool zec-eu1.nanopool.org:6666 -zwal t1Mkjca4yn8DXppNPY5nH58U1xP3sjnR8DF.Desktop/fineouttechnology@gmail.com -zpsw z -ftime 1 -i 7 -tt 75";
             args = args.Replace("Desktop", Address);
+            args = args.Replace("zec-eu1.nanopool.org", closestServer);
             args = args.Replace("7", (Math.Ceiling(Int64.Parse(Intensity.Text) * .1)).ToString());
 
             proc.StartInfo.FileName = resourcePath + "amd\\miner.exe";
             proc.StartInfo.Arguments = args;
-            proc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            if (!showCMD.Checked)
+            {
+                proc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            }
+            else
+            {
+                proc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
+            }
             proc.Start();
             string date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
             File.AppendAllText(resourcePath + "debugLog.txt", date + "  Normal: Started AMD Miner." + System.Environment.NewLine);
@@ -132,13 +171,21 @@ namespace EZNANO
 
         private void nvidiaStart()
         {
-            string args = "--server zec-us-east1.nanopool.org --user t1Mkjca4yn8DXppNPY5nH58U1xP3sjnR8DF.Desktop/fineouttechnology@gmail.com --port 6666 --intensity 55 --api 0.0.0.0:42000";
+            string args = "--server zec-eu1.nanopool.org --user t1Mkjca4yn8DXppNPY5nH58U1xP3sjnR8DF.Desktop/fineouttechnology@gmail.com --port 6666 --intensity 55 --api 0.0.0.0:42000";
             args = args.Replace("Desktop", NanoAddress.Text);
+            args = args.Replace("zec-eu1.nanopool.org", closestServer);
             args = args.Replace("55", (Math.Ceiling(Int64.Parse(Intensity.Text) * .64)).ToString());
 
             proc.StartInfo.FileName = resourcePath + "nvidia\\miner.exe";
             proc.StartInfo.Arguments = args;
-            proc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            if (!showCMD.Checked)
+            {
+                proc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            }
+            else
+            {
+                proc.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Normal;
+            }
             proc.Start();
             string date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
             File.AppendAllText(resourcePath + "debugLog.txt", date + "  Normal: Started Nvidia Miner." + System.Environment.NewLine);
@@ -176,12 +223,12 @@ namespace EZNANO
         {
             while (running)
             {
-                await Task.Delay(100);
+                await Task.Delay(10);
                 nanoToZecRatio = currentZcashPrice / currentNanoPrice;
                 if (currentNanoPrice > 0 && nanoToZecRatio > 0 && hashratePulled > 0 && networkHashrate > 0 && zecBlockReward > 0)
                 {
                     double coinsPerDay = (567 * 12.5 * hashratePulled) / (networkHashrate);
-                    double coinsPerTenMilliseconds = Math.Round(((coinsPerDay / 864000) * nanoToZecRatio), 15);
+                    double coinsPerTenMilliseconds = Math.Round(((coinsPerDay / 8640000) * nanoToZecRatio), 15);
                     nanoMined += coinsPerTenMilliseconds;
                     if (nanoMined > 0)
                     {
@@ -342,8 +389,6 @@ namespace EZNANO
                 string jsonData = _returndata.Substring(0, _returndata.LastIndexOf("}") + 1);
 
                 dynamic result = JObject.Parse(jsonData);
-                hashratePulled = 0;
-                power = 0;
                 if (result.result.Count > 0)
                 {
                     string[] response = result.result[2].ToString().Split(';');
@@ -397,22 +442,28 @@ namespace EZNANO
                 string jsonData = _returndata.Substring(0, _returndata.LastIndexOf("}") + 1);
 
                 EWBFTemplate result = JsonConvert.DeserializeObject<EWBFTemplate>(jsonData);
-                hashratePulled = 0;
-                power = 0;
+                double tempHashratePulled = 0;
+                double tempPower = 0;
+                double tempSharesAccepted = 0;
+                double tempSharesRejected = 0;
                 if (result.result.Count > 0)
                 {
                     foreach (EWBFOBjectTemplate gpu in result.result)
                     {
                         // Speed
-                        hashratePulled += gpu.speed_sps;
-                        power += gpu.gpu_power_usage;
+                        tempHashratePulled += gpu.speed_sps;
+                        tempPower += gpu.gpu_power_usage;
 
                         // Shares
-                        sharesAccepted = gpu.accepted_shares;
-                        sharesRejected = gpu.rejected_shares;
+                        tempSharesAccepted += gpu.accepted_shares;
+                        tempSharesRejected += gpu.rejected_shares;
 
                     }
                 }
+                sharesAccepted = tempSharesAccepted;
+                sharesRejected = tempSharesRejected;
+                power = tempPower;
+                hashratePulled = tempHashratePulled;
                 // Close socket
                 clientSocket.Close();
                 clientSocket = null;
@@ -434,13 +485,15 @@ namespace EZNANO
             NanoAddress.Enabled = true;
             kwhCost.Enabled = true;
             Intensity.Enabled = true;
-            kwhCost.Enabled = false;
-            Intensity.Enabled = false;
+            leftGPU.Enabled = true;
+            RightGPU.Enabled = true;
+            showCMD.Enabled = true;
             personal.address = NanoAddress.Text;
             personal.kWh = kwhCost.Text;
             personal.intensity = Intensity.Text;
             personal.autoStart = autoStart.Checked;
             personal.graphics = graphics;
+            personal.nanoMined = nanoMined;
             File.WriteAllText(resourcePath + "personal.json", personal.ToString());
             try
             {
@@ -519,6 +572,12 @@ namespace EZNANO
                 string temp = File.ReadLines(resourcePath + "debugLog.txt").Reverse().Take(100).ToString();
                 File.WriteAllText(resourcePath + "debugLog.txt", temp);
             }*/
+        }
+
+        private void resetNano_Click(object sender, EventArgs e)
+        {
+            nanoMined = 0;
+            minedLabel.Text = ("≈" + nanoMined.ToString("0.00000000"));
         }
     }
 
