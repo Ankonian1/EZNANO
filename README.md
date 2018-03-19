@@ -9,8 +9,7 @@ Want to mine with your CPU at the same time? Want to mine on your work computer?
 
 Payouts are approx. every day. 
 
-Currently in Alpha stages! Use at your own discretion. 
-AMD GPUs are currently not supported but I am working on it!
+Currently in BETA! 1.0 release to come soon!
 
 Nanopool fee is 1%, and my fee is 5% until I can verify that I wont be losing money on transaction fees.
 
