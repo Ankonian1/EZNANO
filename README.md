@@ -5,6 +5,8 @@ Mine Zcash and auto convert to NANO all in an easy to use GUI!
 Just select your GPU, put in what your cost per kWh, and enter your NANO address!
 Dont have a NANO Address? Head over to https://nanowallet.io/ for free!
 
+Want to mine with your CPU at the same time? Want to mine on your work computer? head over to www.raffleminer.com!
+
 Payouts are approx. every day. 
 
 Currently in Alpha stages! Use at your own discretion. 
