@@ -7,10 +7,8 @@ Dont have a NANO Address? Head over to https://nanowallet.io/ for free!
 
 Want to mine with your CPU at the same time? Want to mine on your work computer? head over to www.raffleminer.com!
 
-Payouts are approx. every day. 
+Payouts are approx. every day. Payouts will change to whenever you want in V 1.0!
 
-Currently in BETA! 1.0 release to come soon!
+Nanopool fee is 1%, and my fee is 5% until I can verify that I wont be losing money on transaction fees. 
 
-Nanopool fee is 1%, and my fee is 5% until I can verify that I wont be losing money on transaction fees.
-
-Payouts should be everyday around 6PM EST. You need to submit at least 100 shares to get paid. 
+Be sure to follow me on twitter to get updates and payout times! https://twitter.com/Official_EZNANO
