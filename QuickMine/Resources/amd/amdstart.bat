@@ -1,1 +1,0 @@
-ZecMiner64.exe
