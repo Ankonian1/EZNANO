@@ -1,4 +1,4 @@
-# EZNANO V 1.0!
+# EZNANO V 1.3!
 
 Mine Zcash and auto convert to NANO all in an easy to use GUI! Payouts are whenever you want after you meet the minimum!
 
@@ -11,3 +11,12 @@ Nanopool fee is 1%, and my fee is 5% until I can verify that I wont be losing mo
 
 Be sure to follow me on twitter to get updates and payout times! https://twitter.com/Official_EZNANO
 
+************ New in 1.3 ************
+- Versions after 1.3 will keep settings
+- UI changes
+- Added approx. payout time
+- Autopay is always on and will attempt payout every hour after approx payout time
+- Better Debug log
+- Added Payout Log
+- Miner auto restarts if it shutdown unexpectedly and stop button was not pressed
+************************************
