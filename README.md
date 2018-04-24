@@ -11,7 +11,8 @@ Nanopool fee is 1%, and my fee is 5% until we have a large enough community to s
 
 Be sure to follow me on twitter to get updates and payout times! https://twitter.com/Official_EZNANO
 
-************ New in 1.4 ************
+************************************
+New in 1.4
 - Fixed bug where nano mined counter would stop for a split second while retrieving stats.
 - Fixed Language issue where commas were not being parsed correctly
 - Profit/day only shows when rev/day has been calculated
@@ -19,8 +20,7 @@ Be sure to follow me on twitter to get updates and payout times! https://twitter
 - Fixed bug where accpeted counter reset when start was pressed. 
 - Small UI changes
 ************************************
-
-************ New in 1.3 ************
+New in 1.3
 - Versions after 1.3 will keep settings
 - UI changes
 - Added approx. payout time
