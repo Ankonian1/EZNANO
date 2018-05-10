@@ -10,7 +10,9 @@ Want to mine with your CPU at the same time? Want to mine on your work computer?
 Nanopool fee is 1%, and my fee is 5% until we have a large enough community to support the cost of my server. 
 
 Be sure to follow me on twitter to get updates and payout times! https://twitter.com/Official_EZNANO
-
+************************************
+New in 1.4.2
+- Fixed bug where multiple machines mining to the same address wouldnt get paid out. 
 ************************************
 New in 1.4
 - Fixed bug where nano mined counter would stop for a split second while retrieving stats.
