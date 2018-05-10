@@ -1,4 +1,4 @@
-# EZNANO V 1.4!
+# EZNANO V 1.4.2!
 
 Mine Zcash and auto convert to NANO all in an easy to use GUI! Payouts are whenever you want after you meet the minimum!
 
