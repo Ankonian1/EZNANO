@@ -1,0 +1,28 @@
+Frequently asked questions
+
+1) NANO cannot be mined. What does this application actually do?
+      -EZNANO mines ZCash and then auto converts to NANO 
+
+2) How do I run this program? 
+      -You can head to https://github.com/Ankonian1/EZNANO/releases and then download the MSI to install the app.
+
+3) Does this run on phones? 
+      -Unfortunately this only runs on Windows at the moment.
+      
+4) What GPUs do you support?
+      -EZNANO supports NVIDIA and AMD GPUs up to 3 years old. 
+      
+5) Does the app contain malware?
+      -EZNANO is a cryptocurrency miner which unfortunately is marked as malware by many services.
+      
+6) What is the fee for using EZNANO?
+      -There is a 5% fee which includes the fees for the miners and the fee for our server. Plus a 1% mining pool fee. 
+      
+7) Does EZNANO mine with CPUs as well?
+      -Currently EZNANO only uses GPUs to mine. If you would like to mine with your CPU at the same time, you can head over to          www.raffleminer.com
+      
+8) What miners does EZNANO utilize?
+      -EZNNANO uses EWBF miner for NVIDIA and Claymore for AMD
+      
+
+Have more questions? Tweet @ me! https://twitter.com/Official_EZNANO
