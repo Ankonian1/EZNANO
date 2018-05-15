@@ -1,6 +1,6 @@
 # EZNANO V 1.4.2!
 
-Mine Zcash and auto convert to NANO all in an easy to use GUI! Payouts are whenever you want after you meet the minimum!
+Mine Zcash and auto convert to NANO all in an easy to use GUI! Payouts are every 24 hours as long as you have 25 valid shares!
 
 Just select your GPU, put in what your cost per kWh, and enter your NANO address!
 Dont have a NANO Address? Head over to https://nanowallet.io/ for free!
