@@ -11,6 +11,16 @@ FLPool fee is 1%, and my fee is 1%.
 
 Be sure to follow me on twitter to get updates and payout times! https://twitter.com/Official_EZNANO
 ************************************
+New in 2.1
+ - New server
+************************************
+New in 2.0
+ - New UI!!
+ - Balance saves every hour
+ - Added Nano/day
+ - 3% payout increase
+ - improved SOL/s accuracy!
+************************************
 New in 1.4.2
 - Fixed bug where multiple machines mining to the same address wouldnt get paid out. 
 ************************************
