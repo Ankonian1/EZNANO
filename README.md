@@ -1,4 +1,4 @@
-# EZNANO V 1.4.2!
+# EZNANO V 2.1!
 
 Mine Zcash and auto convert to NANO all in an easy to use GUI! Payouts are every 24 hours as long as you have 25 valid shares!
 
@@ -7,7 +7,7 @@ Dont have a NANO Address? Head over to https://nanowallet.io/ for free!
 
 Want to mine with your CPU at the same time? Want to mine on your work computer? head over to www.raffleminer.com!
 
-Nanopool fee is 1%, and my fee is 5% until we have a large enough community to support the cost of my server. 
+FLPool fee is 1%, and my fee is 1%. 
 
 Be sure to follow me on twitter to get updates and payout times! https://twitter.com/Official_EZNANO
 ************************************
